@@ -1,0 +1,5 @@
+﻿[
+	{ "name":"GMT", "fullname":"Greenwich Mean Time",   "diff":"+0.00" },
+	{ "name":"JST", "fullname":"Japan Standard Time",   "diff":"+9.00" },
+	{ "name":"PST", "fullname":"Pacific Standard Time", "diff":"-8.00" }
+]

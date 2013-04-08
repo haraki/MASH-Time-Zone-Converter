@@ -1,0 +1,44 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta charset = "UTF-8" />
+<meta name = "viewport" content = "width = device-width, initial-scale = 1" />
+<title>Time Zone Translation</title>
+
+<link rel = "stylesheet" type = "text/css" href = "http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.css" />
+<link rel = "stylesheet" type = "text/css" href = "http://dev.jtsage.com/cdn/datebox/latest/jqm-datebox.min.css" />
+<script type = "text/javascript" src = "http://code.jquery.com/jquery-1.8.0.min.js"></script>
+<script type = "text/javascript" src = "http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script>
+<script type = "text/javascript" src = "http://dev.jtsage.com/cdn/datebox/latest/jqm-datebox.core.min.js"></script>
+<script type = "text/javascript" src = "http://dev.jtsage.com/cdn/datebox/latest/jqm-datebox.mode.datebox.min.js"></script>
+<script type = "text/javascript" src = "./timezone.js"></script>
+
+</head>
+<body>
+	
+<section id = "top" data-role = "page" data-title = "Time Zone Translation">
+  <header data-role = "header" data-position = "fixed"><h1>Time Zone Translation</h1></header>
+  <div data-role = "content">
+    <div id = "src">
+      <select id = "src_zone" onChange = "translateTimeZone()" data-native-menu = "false">
+        <option value = "">Select a Time Zone</option>
+      </select>
+      <input name = "src_date" id = "src_date" type = "text" onChange = "translateTimeZone()" data-role = "datebox" data-options = '{"mode":"datebox", "useNewStyle":true, "enablePopup":true}' class = "ui-input-text ui-body-d ui-corner-all ui-icon-datebox" readonly = "readonly">
+      <input name = "src_time" id = "src_time" type = "text" onChange = "translateTimeZone()" data-role = "datebox" data-options = '{"mode":"timebox", "useNewStyle":true, "enablePopup":true}' class = "ui-input-text ui-body-d ui-corner-all ui-icon-datebox" readonly = "readonly">
+    </div>
+    <div>
+      <p>↓</p>
+    </div>
+    <div id = "dst">
+      <select id = "dst_zone" onChange = "translateTimeZone()" data-native-menu = "false">
+        <option value = "">Select a Time Zone</option>
+      </select>
+      <input name = "dst_date" id = "dst_date" type = "text" data-role = "datebox" data-options = '{"mode":"datebox", "useNewStyle":true, "enablePopup":true}' class = "ui-input-text ui-body-d ui-corner-all ui-icon-datebox" readonly = "readonly">
+      <input name = "dst_time" id = "dst_time" type = "text" data-role = "datebox" data-options = '{"mode":"timebox", "useNewStyle":true, "enablePopup":true}' class = "ui-input-text ui-body-d ui-corner-all ui-icon-datebox" readonly = "readonly">
+    </div>
+  </div>
+  <footer data-role = "footer" data-position = "fixed">Copyright &copy; 2013 Masashi Haraki</footer>
+</section>
+
+</body>
+</html>
