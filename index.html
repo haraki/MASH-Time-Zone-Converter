@@ -3,7 +3,7 @@
 <head>
 <meta charset = "UTF-8" />
 <meta name = "viewport" content = "width = device-width, initial-scale = 1" />
-<title>Time Zone Translation</title>
+<title>Time Zone Converter</title>
 
 <link rel = "stylesheet" type = "text/css" href = "http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.css" />
 <link rel = "stylesheet" type = "text/css" href = "http://dev.jtsage.com/cdn/datebox/latest/jqm-datebox.min.css" />
@@ -16,8 +16,8 @@
 </head>
 <body>
 	
-<section id = "top" data-role = "page" data-title = "Time Zone Translation">
-  <header data-role = "header" data-position = "fixed"><h1>Time Zone Translation</h1></header>
+<section id = "top" data-role = "page" data-title = "Time Zone Converter">
+  <header data-role = "header" data-position = "fixed"><h1>Time Zone Converter</h1></header>
   <div data-role = "content">
     <div id = "src">
       <select id = "src_zone" onChange = "translateTimeZone()" data-native-menu = "false">
@@ -37,7 +37,6 @@
       <input name = "dst_time" id = "dst_time" type = "text" data-role = "datebox" data-options = '{"mode":"timebox", "useNewStyle":true, "enablePopup":true}' class = "ui-input-text ui-body-d ui-corner-all ui-icon-datebox" readonly = "readonly">
     </div>
   </div>
-  <footer data-role = "footer" data-position = "fixed">Copyright &copy; 2013 Masashi Haraki</footer>
 </section>
 
 </body>
