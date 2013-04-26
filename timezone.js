@@ -63,6 +63,9 @@ function translateTimeZone()
 	$("#dst_date").trigger('datebox', {'method' : 'doset'});
 	$("#dst_time").datebox('setTheDate', dst);
 	$("#dst_time").trigger('datebox', {'method' : 'doset'});
+	
+	$("#dst_date_text").text($("#dst_date").val());
+	$("#dst_time_text").text($("#dst_time").val());
 }
 
 function initialize()

@@ -15,7 +15,7 @@
 
 </head>
 <body>
-	
+
 <section id = "top" data-role = "page" data-title = "Time Zone Converter">
   <header data-role = "header" data-position = "fixed"><h1>Time Zone Converter</h1></header>
   <div data-role = "content">
@@ -23,8 +23,8 @@
       <select id = "src_zone" onChange = "translateTimeZone()" data-native-menu = "false">
         <option value = "">Select a Time Zone</option>
       </select>
-      <input name = "src_date" id = "src_date" type = "text" onChange = "translateTimeZone()" data-role = "datebox" data-options = '{"mode":"datebox", "useNewStyle":true, "enablePopup":true}' class = "ui-input-text ui-body-d ui-corner-all ui-icon-datebox" readonly = "readonly">
-      <input name = "src_time" id = "src_time" type = "text" onChange = "translateTimeZone()" data-role = "datebox" data-options = '{"mode":"timebox", "useNewStyle":true, "enablePopup":true}' class = "ui-input-text ui-body-d ui-corner-all ui-icon-datebox" readonly = "readonly">
+      <input name = "src_date" id = "src_date" type = "text" onChange = "translateTimeZone()" data-role = "datebox" data-options = '{"mode":"datebox", "useNewStyle":true, "useFocus":true, "useButton":false}'>
+      <input name = "src_time" id = "src_time" type = "text" onChange = "translateTimeZone()" data-role = "datebox" data-options = '{"mode":"timebox", "useNewStyle":true, "useFocus":true, "useButton":false}'>
     </div>
     <div>
       <p>↓</p>
@@ -33,8 +33,13 @@
       <select id = "dst_zone" onChange = "translateTimeZone()" data-native-menu = "false">
         <option value = "">Select a Time Zone</option>
       </select>
-      <input name = "dst_date" id = "dst_date" type = "text" data-role = "datebox" data-options = '{"mode":"datebox", "useNewStyle":true, "enablePopup":true}' class = "ui-input-text ui-body-d ui-corner-all ui-icon-datebox" readonly = "readonly">
-      <input name = "dst_time" id = "dst_time" type = "text" data-role = "datebox" data-options = '{"mode":"timebox", "useNewStyle":true, "enablePopup":true}' class = "ui-input-text ui-body-d ui-corner-all ui-icon-datebox" readonly = "readonly">
+      <div style = "display:none">
+        <input name = "dst_date" id = "dst_date" type = "text" data-role = "datebox" data-options = '{"mode":"datebox", "useNewStyle":true}'>
+        <input name = "dst_time" id = "dst_time" type = "text" data-role = "datebox" data-options = '{"mode":"timebox", "useNewStyle":true}'>
+      </div>
+      <div id = "dst_text">
+        <span id = "dst_date_text"></span> <span id = "dst_time_text"></span>
+      </div>
     </div>
   </div>
 </section>
