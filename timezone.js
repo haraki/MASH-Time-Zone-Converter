@@ -9,28 +9,12 @@ function makeTimeZoneOption(tzData)
 	
 	for(var i = 0;i < tzData.length;i++)
 	{
-		var optionValue  = tzData[i].name;
-		var optionString = tzData[i].name + "(UTC" + tzData[i].diff + ")";
-		
-		src.append("<option value = \"" + optionValue + "\">" + optionString + "</option>");
-		dst.append("<option value = \"" + optionValue + "\">" + optionString + "</option>");
+		src.append("<option value = \"" + tzData[i].name + "\">" + tzData[i].name + "</option>");
+		dst.append("<option value = \"" + tzData[i].name + "\">" + tzData[i].name + "</option>");
 	}
 	
 	src.selectmenu('refresh');
 	dst.selectmenu('refresh');
-}
-
-function getDiff(name)
-{
-	for(var i = 0;i < timezoneData.length;i++)
-	{
-		if(timezoneData[i].name == name)
-		{
-			return parseFloat(timezoneData[i].diff);
-		}
-	}
-	
-	return null;
 }
 
 function translateTimeZone()
@@ -45,23 +29,19 @@ function translateTimeZone()
 		return;
 	}
 	
-	var srcDiff = getDiff(srcZone);
-	var dstDiff = getDiff(dstZone);
-	
-	if((srcDiff == null) || (dstDiff == null))
-	{
-		return;
-	}
-	
 	var srcDate = $("#src_date").datebox('getTheDate');
 	var srcTime = $("#src_time").datebox('getTheDate');
 	
-	var src = new Date(srcDate.getFullYear(), srcDate.getMonth(), srcDate.getDate(), srcTime.getHours(), srcTime.getMinutes(), 0, 0);
-	var dst = new Date(src.getTime() + ((dstDiff - srcDiff) * 60 * 60 * 1000));
+	var src = new timezoneJS.Date(srcDate.getFullYear(), srcDate.getMonth(), srcDate.getDate(), srcTime.getHours(), srcTime.getMinutes(), srcZone);
 	
-	$("#dst_date").datebox('setTheDate', dst);
+	var dst = new timezoneJS.Date(src);
+	dst.setTimezone(dstZone);
+	
+	var dstDate = new Date(dst.getTime());
+	
+	$("#dst_date").datebox('setTheDate', dstDate);
 	$("#dst_date").trigger('datebox', {'method' : 'doset'});
-	$("#dst_time").datebox('setTheDate', dst);
+	$("#dst_time").datebox('setTheDate', dstDate);
 	$("#dst_time").trigger('datebox', {'method' : 'doset'});
 	
 	$("#dst_date_text").text($("#dst_date").val());
@@ -70,6 +50,9 @@ function translateTimeZone()
 
 function initialize()
 {
+	timezoneJS.timezone.zoneFileBasePath = './tz';
+	timezoneJS.timezone.init();
+	
 	$.getJSON('./timezone.json', makeTimeZoneOption);
 }
 
