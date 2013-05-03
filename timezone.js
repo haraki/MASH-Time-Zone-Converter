@@ -37,7 +37,7 @@ function translateTimeZone()
 	var dst = new timezoneJS.Date(src);
 	dst.setTimezone(dstZone);
 	
-	var dstDate = new Date(dst.getTime());
+	var dstDate = new Date(dst.getTime() + (src.getTimezoneOffset() - dst.getTimezoneOffset()) * 60 * 1000);
 	
 	$("#dst_date").datebox('setTheDate', dstDate);
 	$("#dst_date").trigger('datebox', {'method' : 'doset'});
