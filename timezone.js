@@ -9,8 +9,10 @@ function makeTimeZoneOption(tzData)
 	
 	for(var i = 0;i < tzData.length;i++)
 	{
-		src.append("<option value = \"" + tzData[i].name + "\">" + tzData[i].name + "</option>");
-		dst.append("<option value = \"" + tzData[i].name + "\">" + tzData[i].name + "</option>");
+		var option_str = "<option value = \"" + tzData[i].tz + "\">" + tzData[i].city + "," + tzData[i].country + "</option>";
+		
+		src.append(option_str);
+		dst.append(option_str);
 	}
 	
 	src.selectmenu('refresh');
