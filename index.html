@@ -21,18 +21,24 @@
   <header data-role = "header" data-position = "fixed"><h1>Time Zone Converter</h1></header>
   <div data-role = "content">
     <div id = "src">
-      <select id = "src_zone" onChange = "translateTimeZone()" data-native-menu = "false">
-        <option value = "">Select a Time Zone</option>
+      <select id = "src_country" onChange = "change_srcCountry()" data-native-menu = "false">
+        <option value = "">Select country</option>
       </select>
-      <input name = "src_date" id = "src_date" type = "text" onChange = "translateTimeZone()" data-role = "datebox" data-options = '{"mode":"datebox", "useNewStyle":true, "useFocus":true, "useButton":false}' readonly = "readonly" />
-      <input name = "src_time" id = "src_time" type = "text" onChange = "translateTimeZone()" data-role = "datebox" data-options = '{"mode":"timebox", "useNewStyle":true, "useFocus":true, "useButton":false}' readonly = "readonly" />
+      <select id = "src_city" onChange = "change_srcCity()" data-native-menu = "false" disabled>
+        <option value = "">Select city</option>
+      </select>
+      <input name = "src_date" id = "src_date" type = "text" onChange = "change_srcDate()" data-role = "datebox" data-options = '{"mode":"datebox", "useNewStyle":true, "useFocus":true, "useButton":false}' readonly = "readonly" />
+      <input name = "src_time" id = "src_time" type = "text" onChange = "change_srcTime()" data-role = "datebox" data-options = '{"mode":"timebox", "useNewStyle":true, "useFocus":true, "useButton":false}' readonly = "readonly" />
     </div>
     <div>
       <p>↓</p>
     </div>
     <div id = "dst">
-      <select id = "dst_zone" onChange = "translateTimeZone()" data-native-menu = "false">
-        <option value = "">Select a Time Zone</option>
+      <select id = "dst_country" onChange = "change_dstCountry()" data-native-menu = "false">
+        <option value = "">Select country</option>
+      </select>
+      <select id = "dst_city" onChange = "change_dstCity()" data-native-menu = "false" disabled>
+        <option value = "">Select city</option>
       </select>
       <div style = "display:none">
         <input name = "dst_date" id = "dst_date" type = "text" data-role = "datebox" data-options = '{"mode":"datebox", "useNewStyle":true}'>
