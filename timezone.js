@@ -28,10 +28,10 @@ function initializeOption(tzData)
 
 function resetCitySelect(country, city_id)
 {
-	var len = $(city_id).length;
+	var len = $(city_id).children().length;
 	for(var i = 1;i < len;i++)
 	{
-		$(city_id).options[i] = null;
+		$(city_id).children('option:last-child').remove();
 	}
 	
 	for(var i = 0;i < timezoneData.length;i++)
