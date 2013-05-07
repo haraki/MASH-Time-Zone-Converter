@@ -4,9 +4,6 @@ function initializeOption(tzData)
 {
 	timezoneData = tzData;
 	
-	var src = $("#src_country");
-	var dst = $("#dst_country");
-	
 	var oldCountry = "";
 	
 	for(var i = 0;i < timezoneData.length;i++)
@@ -15,15 +12,15 @@ function initializeOption(tzData)
 		{
 			var option_str = "<option value = \"" + timezoneData[i].country + "\">" + timezoneData[i].country + "</option>";
 		
-			src.append(option_str);
-			dst.append(option_str);
+			$("#src_country").append(option_str);
+			$("#dst_country").append(option_str);
 			
 			oldCountry = timezoneData[i].country;
 		}
 	}
 	
-	src.selectmenu('refresh', true);
-	dst.selectmenu('refresh', true);
+	$("#src_country").selectmenu('refresh', true);
+	$("#dst_country").selectmenu('refresh', true);
 }
 
 function clearCitySelect(cityId)
