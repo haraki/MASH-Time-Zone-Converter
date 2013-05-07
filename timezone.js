@@ -26,13 +26,18 @@ function initializeOption(tzData)
 	dst.selectmenu('refresh', true);
 }
 
-function resetCitySelect(country, city_id)
+function clearCitySelect(cityId)
 {
-	var len = $(city_id).children().length;
+	var len = $(cityId).children().length;
 	for(var i = 1;i < len;i++)
 	{
-		$(city_id).children('option:last-child').remove();
+		$(cityId).children('option:last-child').remove();
 	}
+}
+
+function appendCitySelect(cityId, country)
+{
+	var firstValue = "";
 	
 	for(var i = 0;i < timezoneData.length;i++)
 	{
@@ -40,11 +45,16 @@ function resetCitySelect(country, city_id)
 		{
 			var option_str = "<option value = \"" + timezoneData[i].tz + "\">" + timezoneData[i].city + "</option>";
 			
-			$(city_id).append(option_str);
+			$(cityId).append(option_str);
+			
+			if(firstValue == "")
+			{
+				firstValue = timezoneData[i].tz;
+			}
 		}
 	}
 	
-	$(city_id).selectmenu('refresh', true);
+	$(cityId).val(firstValue);
 }
 
 function translateTimeZone()
@@ -82,32 +92,40 @@ function change_srcCountry()
 {
 	var srcCountry = $("#src_country").val();
 	
+	clearCitySelect('#src_city');
+	
 	if(srcCountry == "")
 	{
 		$("#src_city").selectmenu('disable');
+	}
+	else
+	{
+		appendCitySelect('#src_city', srcCountry);
 		
-		return;
+		$("#src_city").selectmenu('enable');
 	}
 	
-	resetCitySelect(srcCountry, '#src_city');
-	
-	$("#src_city").selectmenu('enable');
+	$("#src_city").selectmenu('refresh', true);
 }
 
 function change_dstCountry()
 {
 	var dstCountry = $("#dst_country").val();
 	
+	clearCitySelect('#dst_city');
+	
 	if(dstCountry == "")
 	{
 		$("#dst_city").selectmenu('disable');
+	}
+	else
+	{
+		appendCitySelect('#dst_city', dstCountry);
 		
-		return;
+		$("#dst_city").selectmenu('enable');
 	}
 	
-	resetCitySelect(dstCountry, '#dst_city');
-	
-	$("#dst_city").selectmenu('enable');
+	$("#dst_city").selectmenu('refresh', true);
 }
 
 function change_srcCity()
