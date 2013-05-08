@@ -19,8 +19,40 @@ function initializeOption(tzData)
 		}
 	}
 	
+	checkCookie('src_country', "#src_country", 'src_zone', '#src_city');
+	checkCookie('dst_country', "#dst_country", 'dst_zone', '#dst_city');
+	
 	$("#src_country").selectmenu('refresh', true);
 	$("#dst_country").selectmenu('refresh', true);
+	$("#src_city").selectmenu('refresh', true);
+	$("#dst_city").selectmenu('refresh', true);
+	
+	translateTimeZone();
+}
+
+function checkCookie(countryCookieName, countrySelectId, zoneCookieName, citySelectId)
+{
+	var countryCookie = $.cookie(countryCookieName);
+	if((countryCookie != undefined) && (countryCookie != ""))
+	{
+		$(countrySelectId).val(countryCookie);
+		
+		var firstValue = setCitySelect(citySelectId, countryCookie);
+		
+		var zoneCookie = $.cookie(zoneCookieName);
+		if((zoneCookie != undefined) && (zoneCookie != ""))
+		{
+			$(citySelectId).selectmenu('enable');
+			
+			$(citySelectId).val(zoneCookie);
+		}
+		else if((firstValue != undefined) && (firstValue != ""))
+		{
+			$(citySelectId).selectmenu('enable');
+			
+			$(citySelectId).val(firstValue);
+		}
+	}
 }
 
 function clearCitySelect(cityId)
@@ -32,7 +64,7 @@ function clearCitySelect(cityId)
 	}
 }
 
-function appendCitySelect(cityId, country)
+function setCitySelect(cityId, country)
 {
 	var firstValue = "";
 	
@@ -51,7 +83,7 @@ function appendCitySelect(cityId, country)
 		}
 	}
 	
-	$(cityId).val(firstValue);
+	return firstValue;
 }
 
 function translateTimeZone()
@@ -69,12 +101,10 @@ function translateTimeZone()
 	var srcDate = $("#src_date").datebox('getTheDate');
 	var srcTime = $("#src_time").datebox('getTheDate');
 	
-	var src = new timezoneJS.Date(srcDate.getFullYear(), srcDate.getMonth(), srcDate.getDate(), srcTime.getHours(), srcTime.getMinutes(), srcZone);
+	var tzDate = new timezoneJS.Date(srcDate.getFullYear(), srcDate.getMonth(), srcDate.getDate(), srcTime.getHours(), srcTime.getMinutes(), 0, 0, srcZone);
+	tzDate.setTimezone(dstZone);
 	
-	var dst = new timezoneJS.Date(src);
-	dst.setTimezone(dstZone);
-	
-	var dstDate = new Date(dst.getTime() + (src.getTimezoneOffset() - dst.getTimezoneOffset()) * 60 * 1000);
+	var dstDate = new Date(tzDate.getFullYear(), tzDate.getMonth(), tzDate.getDate(), tzDate.getHours(), tzDate.getMinutes(), 0, 0);
 	
 	$("#dst_date").datebox('setTheDate', dstDate);
 	$("#dst_date").trigger('datebox', {'method' : 'doset'});
@@ -89,6 +119,8 @@ function change_srcCountry()
 {
 	var srcCountry = $("#src_country").val();
 	
+	$.cookie('src_country', srcCountry);
+	
 	clearCitySelect('#src_city');
 	
 	if(srcCountry == "")
@@ -97,17 +129,25 @@ function change_srcCountry()
 	}
 	else
 	{
-		appendCitySelect('#src_city', srcCountry);
+		var firstValue = setCitySelect('#src_city', srcCountry);
+		
+		$('#src_city').val(firstValue);
+		
+		$.cookie('src_zone', firstValue);
 		
 		$("#src_city").selectmenu('enable');
 	}
 	
 	$("#src_city").selectmenu('refresh', true);
+	
+	translateTimeZone();
 }
 
 function change_dstCountry()
 {
 	var dstCountry = $("#dst_country").val();
+	
+	$.cookie('dst_country', dstCountry);
 	
 	clearCitySelect('#dst_city');
 	
@@ -117,21 +157,35 @@ function change_dstCountry()
 	}
 	else
 	{
-		appendCitySelect('#dst_city', dstCountry);
+		var firstValue = setCitySelect('#dst_city', dstCountry);
+		
+		$('#dst_city').val(firstValue);
+		
+		$.cookie('dst_zone', firstValue);
 		
 		$("#dst_city").selectmenu('enable');
 	}
 	
 	$("#dst_city").selectmenu('refresh', true);
+	
+	translateTimeZone();
 }
 
 function change_srcCity()
 {
+	var srcZone = $("#src_city").val();
+	
+	$.cookie('src_zone', srcZone);
+	
 	translateTimeZone();
 }
 
 function change_dstCity()
 {
+	var dstZone = $("#dst_city").val();
+	
+	$.cookie('dst_zone', dstZone);
+	
 	translateTimeZone();
 }
 
