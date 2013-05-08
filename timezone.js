@@ -27,6 +27,20 @@ function initializeOption(tzData)
 	$("#src_city").selectmenu('refresh', true);
 	$("#dst_city").selectmenu('refresh', true);
 	
+	var srcZone = $("#src_city").val();
+	if((srcZone != undefined) && (srcZone != ""))
+	{
+		var tzDate = new timezoneJS.Date();
+		tzDate.setTimezone(srcZone);
+		
+		var srcDate = new Date(tzDate.getFullYear(), tzDate.getMonth(), tzDate.getDate(), tzDate.getHours(), tzDate.getMinutes(), 0, 0);
+		
+		$("#src_date").datebox('setTheDate', srcDate);
+		$("#src_date").trigger('datebox', {'method' : 'doset'});
+		$("#src_time").datebox('setTheDate', srcDate);
+		$("#src_time").trigger('datebox', {'method' : 'doset'});
+	}
+	
 	translateTimeZone();
 }
 
@@ -93,7 +107,8 @@ function translateTimeZone()
 	var srcDateVal = $("#src_date").val();
 	var srcTimeVal = $("#src_time").val();
 	
-	if((srcZone == "") || (dstZone == "") || (srcDateVal == "") || (srcTimeVal == ""))
+	if((srcZone == undefined) || (srcZone == "") || (dstZone == undefined) || (dstZone == "") ||
+	   (srcDateVal == undefined) || (srcDateVal == "") || (srcTimeVal == undefined) || (srcTimeVal == ""))
 	{
 		return;
 	}
