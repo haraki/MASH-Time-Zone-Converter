@@ -1,11 +1,13 @@
 ﻿var timezoneData;
 
-function initializeOption(tzData)
+function initialize(tzData)
 {
 	timezoneData = tzData;
 	
-	var oldCountry = "";
+	timezoneJS.timezone.zoneFileBasePath = './tz';
+	timezoneJS.timezone.init({ async: false });
 	
+	var oldCountry = "";
 	for(var i = 0;i < timezoneData.length;i++)
 	{
 		if(timezoneData[i].country != oldCountry)
@@ -19,12 +21,11 @@ function initializeOption(tzData)
 		}
 	}
 	
-	$("#src_country").selectmenu('refresh', true);
-	$("#dst_country").selectmenu('refresh', true);
-	
 	checkCookie('src_country', "#src_country", 'src_zone', '#src_city');
 	checkCookie('dst_country', "#dst_country", 'dst_zone', '#dst_city');
 	
+	$("#src_country").selectmenu('refresh', true);
+	$("#dst_country").selectmenu('refresh', true);
 	$("#src_city").selectmenu('refresh', true);
 	$("#dst_city").selectmenu('refresh', true);
 	
@@ -215,12 +216,9 @@ function change_srcTime()
 	translateTimeZone();
 }
 
-function initialize()
+function startInitialize()
 {
-	timezoneJS.timezone.zoneFileBasePath = './tz';
-	timezoneJS.timezone.init({ async: false });
-	
-	$.getJSON('./timezone.json', initializeOption);
+	$.getJSON('./timezone.json', initialize);
 }
 
-$(document).ready(initialize);
+$(document).ready(startInitialize);
