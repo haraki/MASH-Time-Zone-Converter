@@ -19,11 +19,12 @@ function initializeOption(tzData)
 		}
 	}
 	
+	$("#src_country").selectmenu('refresh', true);
+	$("#dst_country").selectmenu('refresh', true);
+	
 	checkCookie('src_country', "#src_country", 'src_zone', '#src_city');
 	checkCookie('dst_country', "#dst_country", 'dst_zone', '#dst_city');
 	
-	$("#src_country").selectmenu('refresh', true);
-	$("#dst_country").selectmenu('refresh', true);
 	$("#src_city").selectmenu('refresh', true);
 	$("#dst_city").selectmenu('refresh', true);
 	
@@ -217,7 +218,7 @@ function change_srcTime()
 function initialize()
 {
 	timezoneJS.timezone.zoneFileBasePath = './tz';
-	timezoneJS.timezone.init();
+	timezoneJS.timezone.init({ async: false });
 	
 	$.getJSON('./timezone.json', initializeOption);
 }
