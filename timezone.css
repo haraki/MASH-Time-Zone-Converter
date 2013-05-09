@@ -1,0 +1,24 @@
+div#src
+{
+	margin-bottom:20px;
+}
+
+span#from
+{
+	font-size:large;
+}
+
+span#to
+{
+	font-size:large;
+}
+
+span#dst_date_text
+{
+	font-size:large;
+}
+
+span#dst_time_text
+{
+	font-size:large;
+}
