@@ -13,6 +13,16 @@ span#to
 	font-size:small;
 }
 
+div#src_date
+{
+	padding-right:5px;
+}
+
+div#src_time
+{
+	padding-left:5px;
+}
+
 div#dst_text
 {
 	text-align:center;
