@@ -44,8 +44,6 @@ function initialize(tzData)
 	}
 	
 	translateTimeZone();
-	
-	$.mobile.hidePageLoadingMsg();
 }
 
 function checkCookie(countryCookieName, countrySelectId, zoneCookieName, citySelectId)
@@ -220,8 +218,6 @@ function change_srcTime()
 
 function startInitialize()
 {
-	$.mobile.showPageLoadingMsg();
-	
 	$.getJSON('./timezone.json', initialize);
 }
 

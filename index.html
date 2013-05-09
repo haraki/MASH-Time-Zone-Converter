@@ -30,8 +30,10 @@
       <select id = "src_city" onChange = "change_srcCity()" data-native-menu = "false" disabled>
         <option value = "">Select city</option>
       </select>
-      <input id = "src_date" type = "text" onChange = "change_srcDate()" data-role = "datebox" data-options = '{"mode":"datebox", "useNewStyle":true, "useFocus":true, "useButton":false}' readonly = "readonly" />
-      <input id = "src_time" type = "text" onChange = "change_srcTime()" data-role = "datebox" data-options = '{"mode":"timebox", "useNewStyle":true, "useFocus":true, "useButton":false}' readonly = "readonly" />
+      <div class = "ui-grid-a">
+        <div class = "ui-block-a"><input id = "src_date" type = "text" onChange = "change_srcDate()" data-role = "datebox" data-options = '{"mode":"datebox", "useNewStyle":true, "useFocus":true, "useButton":false}' readonly = "readonly" /></div>
+        <div class = "ui-block-b"><input id = "src_time" type = "text" onChange = "change_srcTime()" data-role = "datebox" data-options = '{"mode":"timebox", "useNewStyle":true, "useFocus":true, "useButton":false}' readonly = "readonly" /></div>
+      </div>
     </div>
     <div id = "dst">
       <span id = "to">To:</span>

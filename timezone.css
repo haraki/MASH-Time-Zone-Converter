@@ -5,20 +5,26 @@ div#src
 
 span#from
 {
-	font-size:large;
+	font-size:small;
 }
 
 span#to
 {
-	font-size:large;
+	font-size:small;
+}
+
+div#dst_text
+{
+	text-align:center;
 }
 
 span#dst_date_text
 {
-	font-size:large;
+	font-size:x-large;
+	margin-right:20px;
 }
 
 span#dst_time_text
 {
-	font-size:large;
+	font-size:x-large;
 }
