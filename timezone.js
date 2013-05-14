@@ -44,6 +44,9 @@ function initialize(tzData)
 	}
 	
 	translateTimeZone();
+	
+	$("#initialize").hide();
+	$("#main").show();
 }
 
 function checkCookie(countryCookieName, countrySelectId, zoneCookieName, citySelectId)
