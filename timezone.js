@@ -1,6 +1,12 @@
 ﻿var timezoneData;
+var language = "en";
 
-function initialize(tzData)
+function initialize()
+{
+	$.getJSON(JSON_FILE, initialize2);
+}
+
+function initialize2(tzData)
 {
 	timezoneData = tzData;
 	
@@ -219,9 +225,26 @@ function change_srcTime()
 	translateTimeZone();
 }
 
+function click_optionOk()
+{
+	var lang = $("#language").val();
+	if(lang != language)
+	{
+		$.cookie('language', lang);
+	
+		location.replace("./");
+	}
+}
+
 function startInitialize()
 {
-	$.getJSON('./timezone.json', initialize);
+	var languageCookie = $.cookie("language");
+	if((languageCookie != undefined) && (languageCookie != ""))
+	{
+		language = languageCookie;
+	}
+	
+	$.i18n.properties({name:'Messages', path:'./i18n/', mode:'both', language:language, callback:initialize});
 }
 
 $(document).ready(startInitialize);
