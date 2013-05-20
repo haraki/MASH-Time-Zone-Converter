@@ -1,20 +1,55 @@
 ﻿var timezoneData;
+var i18nDir = "./i18n/";
+var tzDataDir = "./tz/";
 var language = "en";
 
-function initialize()
+function initialize(mode)
 {
-	$.getJSON(JSON_FILE, initializeJSON);
+	switch(mode)
+	{
+	case 'cookie':
+		{
+			var languageCookie = $.cookie("language");
+			if((languageCookie != undefined) && (languageCookie != ""))
+			{
+				language = languageCookie;
+			}
+		
+			initialize('properties');
+		}
+		
+		break;
+		
+	case 'properties':
+		$.i18n.properties({name:'Messages', path:i18nDir, mode:'both', language:language, callback:function(){ initialize('json'); }});
+		
+		break;
+		
+	case 'json':
+		$.getJSON(JSON_FILE, function(tzData){ timezoneData = tzData; initialize('timezone'); });
+		
+		break;
+		
+	case 'timezone':
+		timezoneJS.timezone.zoneFileBasePath = tzDataDir;
+		timezoneJS.timezone.init({ callback: function(){ initialize('datebox'); }});
+		
+		break;
+		
+	case 'datebox':
+		$.getScript(DATEBOX_FILE, function(){ initialize('page'); });
+		
+		break;
+		
+	case 'page':
+		initializePage();
+		
+		break;
+		
+	}
 }
 
-function initializeJSON(tzData)
-{
-	timezoneData = tzData;
-	
-	timezoneJS.timezone.zoneFileBasePath = './tz';
-	timezoneJS.timezone.init({ callback: initializeTimeZone });
-}
-
-function initializeTimeZone()
+function initializePage()
 {
 	var oldCountry = "";
 	for(var i = 0;i < timezoneData.length;i++)
@@ -239,15 +274,4 @@ function click_optionOk()
 	}
 }
 
-function startInitialize()
-{
-	var languageCookie = $.cookie("language");
-	if((languageCookie != undefined) && (languageCookie != ""))
-	{
-		language = languageCookie;
-	}
-	
-	$.i18n.properties({name:'Messages', path:'./i18n/', mode:'both', language:language, callback:initialize});
-}
-
-$(document).ready(startInitialize);
+$(document).ready(initialize('cookie'));
