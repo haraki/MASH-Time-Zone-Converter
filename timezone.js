@@ -3,16 +3,19 @@ var language = "en";
 
 function initialize()
 {
-	$.getJSON(JSON_FILE, initialize2);
+	$.getJSON(JSON_FILE, initializeJSON);
 }
 
-function initialize2(tzData)
+function initializeJSON(tzData)
 {
 	timezoneData = tzData;
 	
 	timezoneJS.timezone.zoneFileBasePath = './tz';
-	timezoneJS.timezone.init({ async: false });
-	
+	timezoneJS.timezone.init({ callback: initializeTimeZone });
+}
+
+function initializeTimeZone()
+{
 	var oldCountry = "";
 	for(var i = 0;i < timezoneData.length;i++)
 	{
