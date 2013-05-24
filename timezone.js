@@ -51,6 +51,7 @@ function initialize(mode)
 
 function  initializeDateBox()
 {
+	$("#src_date").data('datebox').options.overrideSetDateButtonLabel     = $.mobile.datebox.prototype.options.lang[DATEBOX_LANG].setDateButtonLabel;
 	$("#src_date").data('datebox').options.overrideSetTimeButtonLabel     = $.mobile.datebox.prototype.options.lang[DATEBOX_LANG].setTimeButtonLabel;
 	$("#src_date").data('datebox').options.overrideSetDurationButtonLabel = $.mobile.datebox.prototype.options.lang[DATEBOX_LANG].setDurationButtonLabel;
 	$("#src_date").data('datebox').options.overrideCalTodayButtonLabel    = $.mobile.datebox.prototype.options.lang[DATEBOX_LANG].calTodayButtonLabel;
@@ -76,6 +77,7 @@ function  initializeDateBox()
 	$("#src_date").data('datebox').options.overrideCalStartDay            = $.mobile.datebox.prototype.options.lang[DATEBOX_LANG].calStartDay;
 	$("#src_date").data('datebox').options.overrideClearButton            = $.mobile.datebox.prototype.options.lang[DATEBOX_LANG].clearButton;
 	
+	$("#src_time").data('datebox').options.overrideSetDateButtonLabel     = $.mobile.datebox.prototype.options.lang[DATEBOX_LANG].setDateButtonLabel;
 	$("#src_time").data('datebox').options.overrideSetTimeButtonLabel     = $.mobile.datebox.prototype.options.lang[DATEBOX_LANG].setTimeButtonLabel;
 	$("#src_time").data('datebox').options.overrideSetDurationButtonLabel = $.mobile.datebox.prototype.options.lang[DATEBOX_LANG].setDurationButtonLabel;
 	$("#src_time").data('datebox').options.overrideCalTodayButtonLabel    = $.mobile.datebox.prototype.options.lang[DATEBOX_LANG].calTodayButtonLabel;
