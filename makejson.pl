@@ -2,7 +2,8 @@
 
 my $iso3166_tab_file = "tz/iso3166.tab";
 my $zone_tab_file = "tz/zone.tab";
-my $json_file = "timezone.json";
+my $timezone_json_file = "timezone.json";
+my $country_json_file = "country.json";
 
 # read 'iso3166.tab'
 if(!open(FILE, $iso3166_tab_file))
@@ -16,14 +17,14 @@ my @iso3166_tab_list = <FILE>;
 close(FILE);
 
 # parse 'iso3166.tab'
-my %country_list;
+my %country_hash;
 foreach my $iso3166_tab_str (@iso3166_tab_list)
 {
 	if($iso3166_tab_str !~ /#/)
 	{
 		chomp($iso3166_tab_str);
 		my @iso3166_tab = split(/\t/, $iso3166_tab_str);
-		$country_list{$iso3166_tab[0]} = $iso3166_tab[1];			# key = country code, param = country name
+		$country_hash{$iso3166_tab[0]} = $iso3166_tab[1];			# key = country code, param = country name
 	}
 }
 
@@ -53,28 +54,59 @@ foreach my $zone_tab_str (@zone_tab_list)
 }
 
 # open 'timezone.json'
-if(!open(OUT_FILE, ">$json_file"))
+if(!open(TIMEZONE_OUT_FILE, ">$timezone_json_file"))
 {
-	print $json_file . " open error.\n";
+	print $timezone_json_file . " open error.\n";
 	exit(-1);
 }
 
-my $first = 1;
-print OUT_FILE "[\n";
+print TIMEZONE_OUT_FILE "[\n";
 for(my $i = 0;$i < @zone_tz_list;$i++)
 {
 	if($i > 0)
 	{
-		print OUT_FILE ",\n";
+		print TIMEZONE_OUT_FILE ",\n";
 	}
 	
 	my $zone_tz_str = $zone_tz_list[$i];
 	my @zone_tz = split(/\//, $zone_tz_str);
 	my $zone_city = pop(@zone_tz);
-	my $zone_country = $country_list{$zone_cc_list[$i]};
+	my $zone_country = $country_hash{$zone_cc_list[$i]};
 	
-	print OUT_FILE "\t{ \"tz\":\"$zone_tz_str\", \"city\":\"$zone_city\", \"country\":\"$zone_country\" }";
+	$zone_country =~ s/\s/_/g;
+	$zone_country =~ s/\&/and/g;
+	
+	print TIMEZONE_OUT_FILE "\t{ \"tz\":\"$zone_tz_str\", \"country\":\"$zone_country\", \"city_name\":\"$zone_city\" }";
 }
-print OUT_FILE "\n]\n";
+print TIMEZONE_OUT_FILE "\n]\n";
 
-close(OUT_FILE);
+close(TIMEZONE_OUT_FILE);
+
+# open 'country.json'
+if(!open(COUNTRY_OUT_FILE, ">$country_json_file"))
+{
+	print $country_json_file . " open error.\n";
+	exit(-1);
+}
+
+my @country_list = values(%country_hash);
+
+print COUNTRY_OUT_FILE "[\n";
+for(my $i = 0;$i < @country_list;$i++)
+{
+	if($i > 0)
+	{
+		print COUNTRY_OUT_FILE ",\n";
+	}
+	
+	my $country_name = $country_list[$i];
+	my $country      = $country_list[$i];
+	
+	$country =~ s/\s/_/g;
+	$country =~ s/\&/and/g;
+	print COUNTRY_OUT_FILE "\t{ \"country\":\"$country\", \"country_name\":\"$country_name\" }";
+}
+
+print COUNTRY_OUT_FILE "\n]\n";
+
+close(COUNTRY_OUT_FILE);
