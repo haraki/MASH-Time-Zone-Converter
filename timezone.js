@@ -190,7 +190,7 @@ function setCitySelect(cityId, country)
 	{
 		if(timezoneData[i].country == country)
 		{
-			var option_str = "<option value = \"" + timezoneData[i].tz + "\">" + timezoneData[i].city + "</option>";
+			var option_str = "<option value = \"" + timezoneData[i].tz + "\">" + timezoneData[i].city_name + "</option>";
 			
 			$(cityId).append(option_str);
 			
