@@ -1,4 +1,5 @@
-﻿var timezoneData;
+﻿var countryData;
+var timezoneData;
 var i18nDir = "./i18n/";
 var tzDataDir = "./tz/";
 var language = "en";
@@ -26,12 +27,17 @@ function initialize(mode)
 		break;
 		
 	case 'datebox':
-		$.getScript(DATEBOX_FILE, function(data, status){ initializeDateBox(); initialize('json'); });
+		$.getScript(DATEBOX_FILE, function(data, status){ initializeDateBox(); initialize('country_json'); });
 		
 		break;
 		
-	case 'json':
-		$.getJSON(JSON_FILE, function(tzData){ timezoneData = tzData; initialize('timezone'); });
+	case 'country_json':
+		$.getJSON(COUNTRY_JSON_FILE, function(ctData, status){ countryData = ctData; initialize('timezone_json'); });
+		
+		break;
+		
+	case 'timezone_json':
+		$.getJSON(TIMEZONE_JSON_FILE, function(tzData, status){ timezoneData = tzData; initialize('timezone'); });
 		
 		break;
 		
@@ -106,18 +112,12 @@ function  initializeDateBox()
 
 function initializePage()
 {
-	var oldCountry = "";
-	for(var i = 0;i < timezoneData.length;i++)
+	for(var i = 0;i < countryData.length;i++)
 	{
-		if(timezoneData[i].country != oldCountry)
-		{
-			var option_str = "<option value = \"" + timezoneData[i].country + "\">" + timezoneData[i].country + "</option>";
+		var option_str = "<option value = \"" + countryData[i].country + "\">" + countryData[i].country_name + "</option>";
 		
-			$("#src_country").append(option_str);
-			$("#dst_country").append(option_str);
-			
-			oldCountry = timezoneData[i].country;
-		}
+		$("#src_country").append(option_str);
+		$("#dst_country").append(option_str);
 	}
 	
 	checkCookie('src_country', "#src_country", 'src_zone', '#src_city');
