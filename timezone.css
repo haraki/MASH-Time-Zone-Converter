@@ -3,12 +3,12 @@
 	margin-bottom:20px;
 }
 
-span#from
+span#msg_from
 {
 	font-size:small;
 }
 
-span#to
+span#msg_to
 {
 	font-size:small;
 }

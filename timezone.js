@@ -22,7 +22,15 @@ function initialize(mode)
 		break;
 		
 	case 'properties':
-		$.i18n.properties({name:'Messages', path:i18nDir, mode:'both', language:language, callback:function(){ initialize('datebox'); }});
+		$.i18n.properties({name:'Messages', path:i18nDir, mode:'both', language:language, callback:function(){ initialize('prepering'); }});
+		
+		break;
+		
+	case 'prepering':
+		$("title").text(TITLE);
+		$("#msg_initializing").text(INITIALIZING);
+		
+		initialize('datebox');
 		
 		break;
 		
@@ -112,6 +120,14 @@ function  initializeDateBox()
 
 function initializePage()
 {
+	$("#msg_title_body").text(TITLE);
+	$("#msg_from").text(FROM);
+	$("#msg_to").text(TO);
+	$("#msg_sel_country_src").text(SELECT_COUNTRY);
+	$("#msg_sel_country_dst").text(SELECT_COUNTRY);
+	$("#msg_sel_city_src").text(SELECT_CITY);
+	$("#msg_sel_city_dst").text(SELECT_CITY);
+	
 	for(var i = 0;i < countryData.length;i++)
 	{
 		var option_str = "<option value = \"" + countryData[i].country + "\">" + countryData[i].country_name + "</option>";

@@ -3,7 +3,7 @@
 <head>
 <meta charset = "UTF-8" />
 <meta name = "viewport" content = "width = device-width, initial-scale = 1" />
-<title>Web Time Zone Converter for Smartphone</title>
+<title>Web Time Zone Converter</title>
 
 <link rel = "stylesheet" type = "text/css" href = "./jquery/jquery.mobile-1.2.1.min.css" />
 <link rel = "stylesheet" type = "text/css" href = "./jquery/jqm-datebox.min.css" />
@@ -22,20 +22,20 @@
 
 <section id = "top" data-role = "page" data-title = "Web Time Zone Converter for Smartphone">
   <header data-role = "header" data-position = "fixed">
-    <h1>Web Time Zone Converter for Smartphone</h1>
+    <h1 id = "msg_title_body">Web Time Zone Converter</h1>
     <a href = "#option" data-icon = "gear" class = "ui-btn-right" data-rel = "dialog" data-transition = "pop">Options</a>
   </header>
   <div id = "initialize" data-role = "content">
-    <p style = "text-align:center">Initializing...</p>
+    <p id = "msg_initializing" style = "text-align:center">Initializing...</p>
   </div>
   <div id = "main" data-role = "content" style = "display:none">
     <div id = "src">
-      <span id = "from">From:</span>
+      <span id = "msg_from">From:</span>
       <select id = "src_country" onChange = "change_srcCountry()" data-native-menu = "false">
-        <option value = "">Select country / area</option>
+        <option id = "msg_sel_country_src" value = "">Select country / area</option>
       </select>
       <select id = "src_city" onChange = "change_srcCity()" data-native-menu = "false" disabled>
-        <option value = "">Select city</option>
+        <option id = "msg_sel_city_src" value = "">Select city</option>
       </select>
       <div class = "ui-grid-a">
         <div class = "ui-block-a" id = "src_date_block" ><input id = "src_date" type = "text" readonly = "readonly" onChange = "change_srcDate()" data-role = "datebox" data-options = '{"mode":"datebox", "useNewStyle":true, "useFocus":true, "useButton":false}'/></div>
@@ -43,12 +43,12 @@
       </div>
     </div>
     <div id = "dst">
-      <span id = "to">To:</span>
+      <span id = "msg_to">To:</span>
       <select id = "dst_country" onChange = "change_dstCountry()" data-native-menu = "false">
-        <option value = "">Select country / area</option>
+        <option id = "msg_sel_country_dst" value = "">Select country / area</option>
       </select>
       <select id = "dst_city" onChange = "change_dstCity()" data-native-menu = "false" disabled>
-        <option value = "">Select city</option>
+        <option id = "msg_sel_city_dst" value = "">Select city</option>
       </select>
       <div style = "display:none">
         <input id = "dst_date" type = "text" data-role = "datebox" data-options = '{"mode":"datebox", "useNewStyle":true}'>
@@ -64,8 +64,8 @@
   <header data-role = "header" data-position = "fixed"><h1>Options</h1></header>
   <div data-role = "content">
     <select id = "language">
-      <option value = "en">English</option>
-      <option value = "ja">日本語</option>
+      <option value = "en">English(en)</option>
+      <option value = "ja">日本語(ja)</option>
     </select>
     <a href = "./" data-role = "button" onClick = "click_optionOk()">OK</a>
     <a href = "./" data-role = "button">Cancel</a>
