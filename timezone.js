@@ -160,6 +160,8 @@ function initializePage()
 	
 	translateTimeZone();
 	
+	$("#language").val(language);
+	
 	$("#initialize").hide();
 	$("#main").show();
 }
