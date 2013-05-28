@@ -144,19 +144,7 @@ function initializePage()
 	$("#src_city").selectmenu('refresh', true);
 	$("#dst_city").selectmenu('refresh', true);
 	
-	var srcZone = $("#src_city").val();
-	if((srcZone != undefined) && (srcZone != ""))
-	{
-		var tzDate = new timezoneJS.Date();
-		tzDate.setTimezone(srcZone);
-		
-		var srcDate = new Date(tzDate.getFullYear(), tzDate.getMonth(), tzDate.getDate(), tzDate.getHours(), tzDate.getMinutes(), 0, 0);
-		
-		$("#src_date").datebox('setTheDate', srcDate);
-		$("#src_date").trigger('datebox', {'method' : 'doset'});
-		$("#src_time").datebox('setTheDate', srcDate);
-		$("#src_time").trigger('datebox', {'method' : 'doset'});
-	}
+	setSrcCurrentDateTime();
 	
 	translateTimeZone();
 	
@@ -220,6 +208,23 @@ function setCitySelect(cityId, country)
 	}
 	
 	return firstValue;
+}
+
+function setSrcCurrentDateTime(srcZone)
+{
+	var srcZone = $("#src_city").val();
+	if((srcZone != undefined) && (srcZone != ""))
+	{
+		var tzDate = new timezoneJS.Date();
+		tzDate.setTimezone(srcZone);
+	
+		var srcDate = new Date(tzDate.getFullYear(), tzDate.getMonth(), tzDate.getDate(), tzDate.getHours(), tzDate.getMinutes(), 0, 0);
+	
+		$("#src_date").datebox('setTheDate', srcDate);
+		$("#src_date").trigger('datebox', {'method' : 'doset'});
+		$("#src_time").datebox('setTheDate', srcDate);
+		$("#src_time").trigger('datebox', {'method' : 'doset'});
+	}
 }
 
 function translateTimeZone()
@@ -313,6 +318,14 @@ function change_srcCity()
 	var srcZone = $("#src_city").val();
 	
 	$.cookie('src_zone', srcZone);
+	
+	var srcDateVal = $("#src_date").val();
+	var srcTimeVal = $("#src_time").val();
+	
+	if(((srcDateVal == undefined) || (srcDateVal == "")) && ((srcTimeVal == undefined) || (srcTimeVal == "")))
+	{
+		setSrcCurrentDateTime();
+	}
 	
 	translateTimeZone();
 }
