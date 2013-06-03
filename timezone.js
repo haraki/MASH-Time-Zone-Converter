@@ -15,15 +15,7 @@ function initialize(mode)
 	case 'language':
 		{
 			initializeLanguage();
-			var languageCookie = $.cookie("language");
-			if((languageCookie != undefined) && (languageCookie != ""))
-			{
-				language = languageCookie;
-			}
-			else
-			{
-			}
-		
+			
 			initialize('properties');
 		}
 		
@@ -68,6 +60,18 @@ function initialize(mode)
 		
 		break;
 		
+	}
+}
+
+function initializeLanguage()
+{
+	var languageCookie = $.cookie("language");
+	if((languageCookie != undefined) && (languageCookie != ""))
+	{
+		language = languageCookie;
+	}
+	else
+	{
 	}
 }
 
