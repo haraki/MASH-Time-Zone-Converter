@@ -4,6 +4,10 @@ var i18nDir = "./i18n/";
 var tzDataDir = "./tz/";
 var language = "en";
 
+/*
+ * Initialize
+ */
+
 function initialize(mode)
 {
 	switch(mode)
@@ -158,6 +162,10 @@ function initializePage()
 	$("#main").show();
 }
 
+/*
+ * Internal Function
+ */
+
 function checkCookie(countryCookieName, countrySelectId, zoneCookieName, citySelectId)
 {
 	var countryCookie = $.cookie(countryCookieName);
@@ -217,7 +225,7 @@ function setCitySelect(cityId, country)
 function setSrcCurrentDateTime(srcZone)
 {
 	var srcZone = $("#src_city").val();
-	if((srcZone != undefined) && (srcZone != ""))
+	if(srcZone != "")
 	{
 		var tzDate = new timezoneJS.Date();
 		tzDate.setTimezone(srcZone);
@@ -261,6 +269,10 @@ function translateTimeZone()
 	$("#dst_time_text").text($("#dst_time").val());
 }
 
+/*
+ * Event
+ */
+
 function change_srcCountry()
 {
 	var srcCountry = $("#src_country").val();
@@ -279,14 +291,12 @@ function change_srcCountry()
 		
 		$('#src_city').val(firstValue);
 		
-		$.cookie('src_zone', firstValue);
-		
 		$("#src_city").selectmenu('enable');
 	}
 	
 	$("#src_city").selectmenu('refresh', true);
 	
-	translateTimeZone();
+	change_srcCity();
 }
 
 function change_dstCountry()
@@ -307,14 +317,12 @@ function change_dstCountry()
 		
 		$('#dst_city').val(firstValue);
 		
-		$.cookie('dst_zone', firstValue);
-		
 		$("#dst_city").selectmenu('enable');
 	}
 	
 	$("#dst_city").selectmenu('refresh', true);
 	
-	translateTimeZone();
+	change_dstCity();
 }
 
 function change_srcCity()
