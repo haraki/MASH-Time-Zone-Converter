@@ -8,12 +8,16 @@ function initialize(mode)
 {
 	switch(mode)
 	{
-	case 'cookie':
+	case 'language':
 		{
+			initializeLanguage();
 			var languageCookie = $.cookie("language");
 			if((languageCookie != undefined) && (languageCookie != ""))
 			{
 				language = languageCookie;
+			}
+			else
+			{
 			}
 		
 			initialize('properties');
@@ -63,7 +67,7 @@ function initialize(mode)
 	}
 }
 
-function  initializeDateBox()
+function initializeDateBox()
 {
 	$("#src_date").data('datebox').options.overrideSetDateButtonLabel     = $.mobile.datebox.prototype.options.lang[DATEBOX_LANG].setDateButtonLabel;
 	$("#src_date").data('datebox').options.overrideSetTimeButtonLabel     = $.mobile.datebox.prototype.options.lang[DATEBOX_LANG].setTimeButtonLabel;
@@ -360,4 +364,4 @@ function click_optionOk()
 	}
 }
 
-$(document).ready(initialize('cookie'));
+$(document).ready(initialize('language'));
