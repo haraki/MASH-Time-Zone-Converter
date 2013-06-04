@@ -3,6 +3,7 @@ var timezoneData;
 var i18nDir = "./i18n/";
 var tzDataDir = "./tz/";
 var language = "en";
+var syncCurrentTime = "true";
 
 /*
  * Initialize
@@ -12,9 +13,9 @@ function initialize(mode)
 {
 	switch(mode)
 	{
-	case 'language':
+	case 'option':
 		{
-			initializeLanguage();
+			initializeOption();
 			
 			initialize('properties');
 		}
@@ -63,15 +64,21 @@ function initialize(mode)
 	}
 }
 
-function initializeLanguage()
+function initializeOption()
 {
-	var languageCookie = $.cookie("language");
+	var languageCookie = $.cookie('language');
 	if((languageCookie != undefined) && (languageCookie != ""))
 	{
 		language = languageCookie;
 	}
 	else
 	{
+	}
+	
+	var syncCurrentTimeCookie = $.cookie('syncCurrentTime');
+	if((syncCurrentTimeCookie != undefined) && (syncCurrentTimeCookie != ""))
+	{
+		syncCurrentTime = syncCurrentTimeCookie;
 	}
 }
 
@@ -139,6 +146,7 @@ function initializePage()
 	$("#msg_sel_country_dst").text(SELECT_COUNTRY);
 	$("#msg_sel_city_src").text(SELECT_CITY);
 	$("#msg_sel_city_dst").text(SELECT_CITY);
+	$("#msg_sync_current_time").text(SYNC_CURRENT_TIME);
 	
 	for(var i = 0;i < countryData.length;i++)
 	{
@@ -161,6 +169,20 @@ function initializePage()
 	translateTimeZone();
 	
 	$("#language").val(language);
+	$("#sync_current_time").checkboxradio({
+		create:function(event, ui)
+		{
+			if(syncCurrentTime == "true")
+			{
+				$("#sync_current_time").attr("checked", true);
+			}
+			else
+			{
+				$("#sync_current_time").attr("checked", false);
+			}
+			$("#sync_current_time").checkboxradio('refresh');
+		}
+	});
 	
 	$("#initialize").hide();
 	$("#main").show();
@@ -338,7 +360,7 @@ function change_srcCity()
 	var srcDateVal = $("#src_date").val();
 	var srcTimeVal = $("#src_time").val();
 	
-	if(((srcDateVal == undefined) || (srcDateVal == "")) && ((srcTimeVal == undefined) || (srcTimeVal == "")))
+	if((syncCurrentTime) || (((srcDateVal == undefined) || (srcDateVal == "")) && ((srcTimeVal == undefined) || (srcTimeVal == ""))))
 	{
 		setSrcCurrentDateTime();
 	}
@@ -367,13 +389,17 @@ function change_srcTime()
 
 function click_optionOk()
 {
+	syncCurrentTime = $("#sync_current_time").prop('checked');
+	
+	$.cookie('syncCurrentTime', syncCurrentTime);
+	
 	var lang = $("#language").val();
 	if(lang != language)
 	{
 		$.cookie('language', lang);
-	
+		
 		location.replace("./");
 	}
 }
 
-$(document).ready(initialize('language'));
+$(document).ready(initialize('option'));
