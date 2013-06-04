@@ -29,7 +29,7 @@ function initialize(mode)
 		
 	case 'prepering':
 		$("title").text(TITLE);
-		$("#msg_initializing").text(INITIALIZING);
+		$("#id_initializing").text(INITIALIZING);
 		
 		initialize('datebox');
 		
@@ -139,14 +139,16 @@ function initializeDateBox()
 
 function initializePage()
 {
-	$("#msg_title_body").text(TITLE);
-	$("#msg_from").text(FROM);
-	$("#msg_to").text(TO);
-	$("#msg_sel_country_src").text(SELECT_COUNTRY);
-	$("#msg_sel_country_dst").text(SELECT_COUNTRY);
-	$("#msg_sel_city_src").text(SELECT_CITY);
-	$("#msg_sel_city_dst").text(SELECT_CITY);
-	$("#msg_sync_current_time").text(SYNC_CURRENT_TIME);
+	$("#id_title_body").text(TITLE);
+	$("#id_from").text(FROM);
+	$("#id_to").text(TO);
+	$("#id_sel_country_src").text(SELECT_COUNTRY);
+	$("#id_sel_country_dst").text(SELECT_COUNTRY);
+	$("#id_sel_city_src").text(SELECT_CITY);
+	$("#id_sel_city_dst").text(SELECT_CITY);
+	$("#id_sync_current_time").text(SYNC_CURRENT_TIME);
+	$("#id_option_ok").text(OPTION_OK);
+	$("#id_option_cancel").text(OPTION_CANCEL);
 	
 	for(var i = 0;i < countryData.length;i++)
 	{
