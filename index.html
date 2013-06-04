@@ -31,12 +31,14 @@
   <div id = "main" data-role = "content" style = "display:none">
     <div id = "src">
       <span id = "id_from">From:</span>
-      <select id = "src_country" onChange = "change_srcCountry()">
-        <option id = "id_sel_country_src" value = "">Select country / area</option>
-      </select>
-      <select id = "src_city" onChange = "change_srcCity()" disabled>
-        <option id = "id_sel_city_src" value = "">Select city</option>
-      </select>
+      <fieldset data-role = "controlgroup">
+        <select id = "src_country" onChange = "change_srcCountry()">
+          <option id = "id_sel_country_src" value = "">Select country / area</option>
+        </select>
+        <select id = "src_city" onChange = "change_srcCity()" disabled>
+          <option id = "id_sel_city_src" value = "">Select city</option>
+        </select>
+      </fieldset>
       <div class = "ui-grid-a">
         <div class = "ui-block-a" id = "src_date_block" ><input id = "src_date" type = "text" readonly = "readonly" onChange = "change_srcDate()" data-role = "datebox" data-options = '{"mode":"datebox", "useNewStyle":true, "useFocus":true, "useButton":false}'/></div>
         <div class = "ui-block-b" id = "src_time_block" ><input id = "src_time" type = "text" readonly = "readonly" onChange = "change_srcTime()" data-role = "datebox" data-options = '{"mode":"timebox", "useNewStyle":true, "useFocus":true, "useButton":false}'/></div>
@@ -44,12 +46,14 @@
     </div>
     <div id = "dst">
       <span id = "id_to">To:</span>
-      <select id = "dst_country" onChange = "change_dstCountry()">
-        <option id = "id_sel_country_dst" value = "">Select country / area</option>
-      </select>
-      <select id = "dst_city" onChange = "change_dstCity()" disabled>
-        <option id = "id_sel_city_dst" value = "">Select city</option>
-      </select>
+      <fieldset data-role = "controlgroup">
+        <select id = "dst_country" onChange = "change_dstCountry()">
+          <option id = "id_sel_country_dst" value = "">Select country / area</option>
+        </select>
+        <select id = "dst_city" onChange = "change_dstCity()" disabled>
+          <option id = "id_sel_city_dst" value = "">Select city</option>
+        </select>
+      </fieldset>
       <div style = "display:none">
         <input id = "dst_date" type = "text" data-role = "datebox" data-options = '{"mode":"datebox", "useNewStyle":true}'>
         <input id = "dst_time" type = "text" data-role = "datebox" data-options = '{"mode":"timebox", "useNewStyle":true}'>
@@ -70,10 +74,8 @@
     <input type = "checkbox" name = "sync_current_time" id = "sync_current_time" />
     <label id = "id_sync_current_time" for = "sync_current_time">Sync current time</label>
     <br />
-    <div class = "ui-grid-a">
-      <div class = "ui-block-a"><a id = "id_option_ok" href = "./" data-role = "button" data-icon = "star" data-theme = "b" onClick = "click_optionOk()">OK</a></div>
-      <div class = "ui-block-b"><a id = "id_option_cancel" href = "./" data-role = "button" data-icon = "delete">Cancel</a></div>
-    </div>
+    <a id = "id_option_ok" href = "./" data-role = "button" data-icon = "star" data-theme = "b" onClick = "click_optionOk()">OK</a>
+    <a id = "id_option_cancel" href = "./" data-role = "button" data-icon = "delete">Cancel</a>
   </div>
 </section>
 
