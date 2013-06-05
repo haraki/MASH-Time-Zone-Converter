@@ -14,24 +14,14 @@ function initialize(mode)
 	switch(mode)
 	{
 	case 'option':
-		{
-			initializeOption();
-			
-			initialize('properties');
-		}
+		initializeOption();
+		
+		initialize('properties');
 		
 		break;
 		
 	case 'properties':
-		$.i18n.properties({name:'Messages', path:i18nDir, mode:'both', language:language, callback:function(){ initialize('prepering'); }});
-		
-		break;
-		
-	case 'prepering':
-		$("title").text(TITLE);
-		$("#id_initializing").text(INITIALIZING);
-		
-		initialize('datebox');
+		$.i18n.properties({name:'Messages', path:i18nDir, mode:'both', language:language, callback:function(){ initialize('datebox'); }});
 		
 		break;
 		
@@ -139,6 +129,7 @@ function initializeDateBox()
 
 function initializePage()
 {
+	$("title").text(TITLE);
 	$("#id_title_body").text(TITLE);
 	$("#id_from").text(FROM);
 	$("#id_to").text(TO);
