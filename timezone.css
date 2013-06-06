@@ -2,6 +2,11 @@
  * Copyright 2013 Masashi Haraki (masa.haraki@gmail.com)
  */
 
+div#title
+{
+	text-align:center;
+}
+
 div#src
 {
 	margin-bottom:20px;
