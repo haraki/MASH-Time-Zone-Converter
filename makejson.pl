@@ -1,5 +1,9 @@
 ﻿#!/usr/bin/perl
 
+#
+# Copyright 2013 Masashi Haraki (masa.haraki@gmail.com)
+#
+
 my $iso3166_tab_file = "tz/iso3166.tab";
 my $zone_tab_file = "tz/zone.tab";
 my $timezone_json_file = "timezone.json";

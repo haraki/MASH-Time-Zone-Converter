@@ -1,4 +1,8 @@
-﻿var countryData;
+﻿/*
+ * Copyright 2013 Masashi Haraki (masa.haraki@gmail.com)
+ */
+
+var countryData;
 var timezoneData;
 var i18nDir = "./i18n/";
 var tzDataDir = "./tz/";
