@@ -7,7 +7,7 @@ var timezoneData;
 var i18nDir = "./i18n/";
 var tzDataDir = "./tz/";
 var language = "en";
-var syncCurrentTime = "true";
+var syncCurrentTime = "on";
 
 /*
  * Initialize
@@ -25,12 +25,7 @@ function initialize(mode)
 		break;
 		
 	case 'properties':
-		$.i18n.properties({name:'Messages', path:i18nDir, mode:'both', language:language, callback:function(){ initialize('datebox'); }});
-		
-		break;
-		
-	case 'datebox':
-		$.getScript(DATEBOX_FILE, function(data, status){ initializeDateBox(); initialize('country_json'); });
+		$.i18n.properties({name:'Messages', path:i18nDir, mode:'both', language:language, callback:function(){ initialize('country_json'); }});
 		
 		break;
 		
@@ -40,7 +35,12 @@ function initialize(mode)
 		break;
 		
 	case 'timezone_json':
-		$.getJSON(TIMEZONE_JSON_FILE, function(tzData, status){ timezoneData = tzData; initialize('timezone'); });
+		$.getJSON(TIMEZONE_JSON_FILE, function(tzData, status){ timezoneData = tzData; initialize('datebox'); });
+		
+		break;
+		
+	case 'datebox':
+		$.getScript(DATEBOX_FILE, function(data, status){ initializeDateBox(); initialize('timezone'); });
 		
 		break;
 		
@@ -64,9 +64,6 @@ function initializeOption()
 	if((languageCookie != undefined) && (languageCookie != ""))
 	{
 		language = languageCookie;
-	}
-	else
-	{
 	}
 	
 	var syncCurrentTimeCookie = $.cookie('syncCurrentTime');
@@ -134,7 +131,7 @@ function initializeDateBox()
 function initializePage()
 {
 	$("title").text(TITLE);
-	$("#id_title_body").text(TITLE);
+	$("#id_title").text(TITLE);
 	$("#id_from").text(FROM);
 	$("#id_to").text(TO);
 	$("#id_sel_country_src").text(SELECT_COUNTRY);
@@ -161,25 +158,15 @@ function initializePage()
 	$("#src_city").selectmenu('refresh', true);
 	$("#dst_city").selectmenu('refresh', true);
 	
+	$("#sync_current_time").val(syncCurrentTime);
+	$("#sync_current_time").slider('refresh');
+	
+	$("#language").val(language);
+	$("#language").selectmenu('refresh', true);
+	
 	setSrcCurrentDateTime();
 	
 	translateTimeZone();
-	
-	$("#language").val(language);
-	$("#sync_current_time").checkboxradio({
-		create:function(event, ui)
-		{
-			if(syncCurrentTime == "true")
-			{
-				$("#sync_current_time").attr("checked", true);
-			}
-			else
-			{
-				$("#sync_current_time").attr("checked", false);
-			}
-			$("#sync_current_time").checkboxradio('refresh');
-		}
-	});
 	
 	$("#initialize").hide();
 	$("#main").show();
@@ -252,9 +239,9 @@ function setSrcCurrentDateTime(srcZone)
 	{
 		var tzDate = new timezoneJS.Date();
 		tzDate.setTimezone(srcZone);
-	
+		
 		var srcDate = new Date(tzDate.getFullYear(), tzDate.getMonth(), tzDate.getDate(), tzDate.getHours(), tzDate.getMinutes(), 0, 0);
-	
+		
 		$("#src_date").datebox('setTheDate', srcDate);
 		$("#src_date").trigger('datebox', {'method' : 'doset'});
 		$("#src_time").datebox('setTheDate', srcDate);
@@ -357,7 +344,7 @@ function change_srcCity()
 	var srcDateVal = $("#src_date").val();
 	var srcTimeVal = $("#src_time").val();
 	
-	if((syncCurrentTime) || (((srcDateVal == undefined) || (srcDateVal == "")) && ((srcTimeVal == undefined) || (srcTimeVal == ""))))
+	if((syncCurrentTime == "on") || (((srcDateVal == undefined) || (srcDateVal == "")) && ((srcTimeVal == undefined) || (srcTimeVal == ""))))
 	{
 		setSrcCurrentDateTime();
 	}
@@ -384,12 +371,22 @@ function change_srcTime()
 	translateTimeZone();
 }
 
-function click_optionOk()
+function change_syncCurrentTime()
 {
-	syncCurrentTime = $("#sync_current_time").prop('checked');
+	syncCurrentTime = $("#sync_current_time").val();
 	
 	$.cookie('syncCurrentTime', syncCurrentTime);
 	
+	if(syncCurrentTime == "on")
+	{
+		setSrcCurrentDateTime();
+		
+		translateTimeZone();
+	}
+}
+
+function change_language()
+{
 	var lang = $("#language").val();
 	if(lang != language)
 	{

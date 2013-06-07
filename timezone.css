@@ -7,6 +7,11 @@ div#title
 	text-align:center;
 }
 
+h1#id_title
+{
+	font-size:20px;
+}
+
 div#src
 {
 	margin-bottom:20px;

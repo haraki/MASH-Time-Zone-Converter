@@ -26,7 +26,7 @@
 
 <section id = "top" data-role = "page" data-title = "Web Time Zone Converter for Smartphone">
   <div id = "title">
-    <h3 id = "id_title_body">Web Time Zone Converter</h3>
+    <h1 id = "id_title">Web Time Zone Converter</h1>
   </div>
   <div id = "initialize" data-role = "content">
     <p style = "text-align:center">Initializing...</p>
@@ -43,8 +43,8 @@
         </select>
       </fieldset>
       <div class = "ui-grid-a">
-        <div class = "ui-block-a" id = "src_date_block" ><input id = "src_date" type = "text" readonly = "readonly" onChange = "change_srcDate()" data-role = "datebox" data-options = '{"mode":"datebox", "useNewStyle":true, "useFocus":true, "useButton":false}'/></div>
-        <div class = "ui-block-b" id = "src_time_block" ><input id = "src_time" type = "text" readonly = "readonly" onChange = "change_srcTime()" data-role = "datebox" data-options = '{"mode":"timebox", "useNewStyle":true, "useFocus":true, "useButton":false}'/></div>
+        <div id = "src_date_block" class = "ui-block-a"><input id = "src_date" type = "text" readonly = "readonly" onChange = "change_srcDate()" data-role = "datebox" data-options = '{"mode":"datebox", "useNewStyle":true, "useFocus":true, "useButton":false}'/></div>
+        <div id = "src_time_block" class = "ui-block-b"><input id = "src_time" type = "text" readonly = "readonly" onChange = "change_srcTime()" data-role = "datebox" data-options = '{"mode":"timebox", "useNewStyle":true, "useFocus":true, "useButton":false}'/></div>
       </div>
     </div>
     <div id = "dst">
@@ -65,23 +65,19 @@
         <span id = "dst_date_text"></span> <span id = "dst_time_text"></span>
       </div>
     </div>
-  </div>
-  <div data-role = "footer" data-position = "fixed">
-    <a href = "#option" data-icon = "gear" data-role = "button" data-rel = "dialog" data-transition = "pop">Options</a>
-  </div>
-</section>
-<section id = "option" data-role = "page" data-title = "Option - Time Zone Converter">
-  <header data-role = "header" data-position = "fixed"><h1>Options</h1></header>
-  <div data-role = "content">
-    <select id = "language">
-      <option value = "en">English(en)</option>
-      <option value = "ja">日本語(ja)</option>
-    </select>
-    <input type = "checkbox" name = "sync_current_time" id = "sync_current_time" />
-    <label id = "id_sync_current_time" for = "sync_current_time">Sync current time</label>
-    <br />
-    <a id = "id_option_ok" href = "./" data-role = "button" data-icon = "check" data-theme = "b" onClick = "click_optionOk()">OK</a>
-    <a id = "id_option_cancel" href = "./" data-role = "button" data-icon = "delete">Cancel</a>
+    <div id = "option">
+      <div data-role = "fieldcontain">
+        <label id = "id_sync_current_time" for = "sync_current_time">Sync current time</label>
+        <select id = "sync_current_time" name = "sync_current_time" data-role = "slider" onChange = "change_syncCurrentTime()">
+          <option value = "off">OFF</option>
+          <option value = "on">ON</option>
+        </select>
+      </div>
+      <select id = "language" name = "lanugage" onChange = "change_language()">
+        <option value = "en">English(en)</option>
+        <option value = "ja">日本語(ja)</option>
+      </select>
+    </div>
   </div>
 </section>
 
