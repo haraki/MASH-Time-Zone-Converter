@@ -7,7 +7,7 @@
 <head>
 <meta charset = "UTF-8" />
 <meta name = "viewport" content = "width = device-width, initial-scale = 1" />
-<title>Web Time Zone Converter</title>
+<title>MASH Time Zone Converter on Web</title>
 
 <link rel = "stylesheet" type = "text/css" href = "./jquery/jquery.mobile-1.2.1.min.css" />
 <link rel = "stylesheet" type = "text/css" href = "./jquery/jqm-datebox.min.css" />
@@ -24,22 +24,22 @@
 </head>
 <body>
 
-<section id = "top" data-role = "page" data-title = "Web Time Zone Converter for Smartphone">
+<section id = "top" data-role = "page" data-title = "MASH Time Zone Converter">
   <div id = "title">
-    <h1 id = "id_title">Web Time Zone Converter</h1>
+    <h1 id = "msg_title">MASH Time Zone Converter</h1>
   </div>
   <div id = "initialize" data-role = "content">
     <p style = "text-align:center">Initializing...</p>
   </div>
   <div id = "main" data-role = "content" style = "display:none">
     <div id = "src">
-      <span id = "id_from">From:</span>
+      <span id = "msg_from">From:</span>
       <fieldset data-role = "controlgroup">
         <select id = "src_country" onChange = "change_srcCountry()">
-          <option id = "id_sel_country_src" value = "">Select country / area</option>
+          <option id = "msg_sel_country_src" value = "">Select country / area</option>
         </select>
         <select id = "src_city" onChange = "change_srcCity()" disabled>
-          <option id = "id_sel_city_src" value = "">Select city</option>
+          <option id = "msg_sel_city_src" value = "">Select city</option>
         </select>
       </fieldset>
       <div class = "ui-grid-a">
@@ -48,13 +48,13 @@
       </div>
     </div>
     <div id = "dst">
-      <span id = "id_to">To:</span>
+      <span id = "msg_to">To:</span>
       <fieldset data-role = "controlgroup">
         <select id = "dst_country" onChange = "change_dstCountry()">
-          <option id = "id_sel_country_dst" value = "">Select country / area</option>
+          <option id = "msg_sel_country_dst" value = "">Select country / area</option>
         </select>
         <select id = "dst_city" onChange = "change_dstCity()" disabled>
-          <option id = "id_sel_city_dst" value = "">Select city</option>
+          <option id = "msg_sel_city_dst" value = "">Select city</option>
         </select>
       </fieldset>
       <div style = "display:none">
@@ -67,16 +67,19 @@
     </div>
     <div id = "option">
       <div data-role = "fieldcontain">
-        <label id = "id_sync_current_time" for = "sync_current_time">Sync current time</label>
+        <label id = "msg_sync_current_time" for = "sync_current_time">Sync current time:</label>
         <select id = "sync_current_time" name = "sync_current_time" data-role = "slider" onChange = "change_syncCurrentTime()">
           <option value = "off">OFF</option>
           <option value = "on">ON</option>
         </select>
       </div>
-      <select id = "language" name = "lanugage" onChange = "change_language()">
-        <option value = "en">English(en)</option>
-        <option value = "ja">日本語(ja)</option>
-      </select>
+      <div data-role = "fieldcontain">
+        <label id = "msg_language" for = "language">Language:</label>
+        <select id = "language" name = "lanugage" onChange = "change_language()">
+          <option value = "en">English(en)</option>
+          <option value = "ja">日本語(ja)</option>
+        </select>
+      </div>
     </div>
   </div>
 </section>

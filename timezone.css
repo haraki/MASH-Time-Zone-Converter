@@ -7,7 +7,7 @@ div#title
 	text-align:center;
 }
 
-h1#id_title
+h1#msg_title
 {
 	font-size:20px;
 }
@@ -23,6 +23,16 @@ span#msg_from
 }
 
 span#msg_to
+{
+	font-size:small;
+}
+
+label#msg_sync_current_time
+{
+	font-size:small;
+}
+
+label#msg_language
 {
 	font-size:small;
 }
