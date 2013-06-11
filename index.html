@@ -25,8 +25,8 @@
 <body>
 
 <section id = "top" data-role = "page" data-title = "MASH Time Zone Converter">
-  <div id = "title">
-    <h1 id = "msg_title">MASH Time Zone Converter</h1>
+  <div id = "header" data-role = "header" data-theme = "c">
+    <h1 id = "head_title"><span id = "mash">MASH</span> <span id = "msg_title">Time Zone Converter</span></h1>
   </div>
   <div id = "initialize" data-role = "content">
     <p style = "text-align:center">Initializing...</p>
@@ -43,8 +43,12 @@
         </select>
       </fieldset>
       <div class = "ui-grid-a">
-        <div id = "src_date_block" class = "ui-block-a"><input id = "src_date" type = "text" readonly = "readonly" onChange = "change_srcDate()" data-role = "datebox" data-options = '{"mode":"datebox", "useNewStyle":true, "useFocus":true, "useButton":false}'/></div>
-        <div id = "src_time_block" class = "ui-block-b"><input id = "src_time" type = "text" readonly = "readonly" onChange = "change_srcTime()" data-role = "datebox" data-options = '{"mode":"timebox", "useNewStyle":true, "useFocus":true, "useButton":false}'/></div>
+        <div id = "src_date_block" class = "ui-block-a">
+          <input id = "src_date" type = "text" readonly = "readonly" onChange = "change_srcDate()" data-role = "datebox" data-options = '{"mode":"datebox", "useNewStyle":true, "useFocus":true, "useButton":false, "useModal":true}'/>
+        </div>
+        <div id = "src_time_block" class = "ui-block-b">
+          <input id = "src_time" type = "text" readonly = "readonly" onChange = "change_srcTime()" data-role = "datebox" data-options = '{"mode":"timebox", "useNewStyle":true, "useFocus":true, "useButton":false, "useModal":true}'/>
+        </div>
       </div>
     </div>
     <div id = "dst">
@@ -66,20 +70,10 @@
       </div>
     </div>
     <div id = "option">
-      <div data-role = "fieldcontain">
-        <label id = "msg_sync_current_time" for = "sync_current_time">Sync current time:</label>
-        <select id = "sync_current_time" name = "sync_current_time" data-role = "slider" onChange = "change_syncCurrentTime()">
-          <option value = "off">OFF</option>
-          <option value = "on">ON</option>
-        </select>
-      </div>
-      <div data-role = "fieldcontain">
-        <label id = "msg_language" for = "language">Language:</label>
-        <select id = "language" name = "lanugage" onChange = "change_language()">
-          <option value = "en">English(en)</option>
-          <option value = "ja">日本語(ja)</option>
-        </select>
-      </div>
+      <select id = "language" name = "lanugage" onChange = "change_language()">
+        <option value = "en">English(en)</option>
+        <option value = "ja">日本語(ja)</option>
+      </select>
     </div>
   </div>
 </section>

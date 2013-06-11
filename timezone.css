@@ -2,17 +2,24 @@
  * Copyright 2013 Masashi Haraki (masa.haraki@gmail.com)
  */
 
-div#title
+h1#head_title
 {
-	text-align:center;
+	font-size:large;
+	margin-right:0px;
+	margin-left:0px;
 }
 
-h1#msg_title
+span#mash
 {
-	font-size:20px;
+	color:lightseagreen;
 }
 
 div#src
+{
+	margin-bottom:20px;
+}
+
+div#dst
 {
 	margin-bottom:20px;
 }
@@ -23,16 +30,6 @@ span#msg_from
 }
 
 span#msg_to
-{
-	font-size:small;
-}
-
-label#msg_sync_current_time
-{
-	font-size:small;
-}
-
-label#msg_language
 {
 	font-size:small;
 }
