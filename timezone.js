@@ -39,7 +39,7 @@ function initialize(mode)
 		break;
 		
 	case 'datebox':
-		$.getScript(DATEBOX_FILE, function(data, status){ initializeDateBox(); initialize('timezone'); });
+		$.getScript(DATEBOX_FILE, function(data, status){ initializeDateBoxAll(); initialize('timezone'); });
 		
 		break;
 		
@@ -66,59 +66,41 @@ function initializeOption()
 	}
 }
 
-function initializeDateBox()
+function initializeDateBoxAll()
 {
-	$("#src_date").data('datebox').options.overrideSetDateButtonLabel     = $.mobile.datebox.prototype.options.lang[DATEBOX_LANG].setDateButtonLabel;
-	$("#src_date").data('datebox').options.overrideSetTimeButtonLabel     = $.mobile.datebox.prototype.options.lang[DATEBOX_LANG].setTimeButtonLabel;
-	$("#src_date").data('datebox').options.overrideSetDurationButtonLabel = $.mobile.datebox.prototype.options.lang[DATEBOX_LANG].setDurationButtonLabel;
-	$("#src_date").data('datebox').options.overrideCalTodayButtonLabel    = $.mobile.datebox.prototype.options.lang[DATEBOX_LANG].calTodayButtonLabel;
-	$("#src_date").data('datebox').options.overrideTitleDateDialogLabel   = $.mobile.datebox.prototype.options.lang[DATEBOX_LANG].titleDateDialogLabel;
-	$("#src_date").data('datebox').options.overrideTitleTimeDialogLabel   = $.mobile.datebox.prototype.options.lang[DATEBOX_LANG].titleTimeDialogLabel;
-	$("#src_date").data('datebox').options.overrideDaysOfWeek             = $.mobile.datebox.prototype.options.lang[DATEBOX_LANG].daysOfWeek;
-	$("#src_date").data('datebox').options.overrideDaysOfWeekShort        = $.mobile.datebox.prototype.options.lang[DATEBOX_LANG].daysOfWeekShort;
-	$("#src_date").data('datebox').options.overrideMonthsOfYear           = $.mobile.datebox.prototype.options.lang[DATEBOX_LANG].monthsOfYear;
-	$("#src_date").data('datebox').options.overrideMonthsOfYearShort      = $.mobile.datebox.prototype.options.lang[DATEBOX_LANG].monthsOfYearShort;
-	$("#src_date").data('datebox').options.overrideDurationLabel          = $.mobile.datebox.prototype.options.lang[DATEBOX_LANG].durationLabel;
-	$("#src_date").data('datebox').options.overrideDurationDays           = $.mobile.datebox.prototype.options.lang[DATEBOX_LANG].durationDays;
-	$("#src_date").data('datebox').options.overrideTooltip                = $.mobile.datebox.prototype.options.lang[DATEBOX_LANG].tooltip;
-	$("#src_date").data('datebox').options.overrideNextMonth              = $.mobile.datebox.prototype.options.lang[DATEBOX_LANG].nextMonth;
-	$("#src_date").data('datebox').options.overridePrevMonth              = $.mobile.datebox.prototype.options.lang[DATEBOX_LANG].prevMonth;
-	$("#src_date").data('datebox').options.overrideTimeFormat             = $.mobile.datebox.prototype.options.lang[DATEBOX_LANG].timeFormat;
-	$("#src_date").data('datebox').options.overrideHeaderFormat           = $.mobile.datebox.prototype.options.lang[DATEBOX_LANG].headerFormat;
-	$("#src_date").data('datebox').options.overrideDateFieldOrder         = $.mobile.datebox.prototype.options.lang[DATEBOX_LANG].dateFieldOrder;
-	$("#src_date").data('datebox').options.overrideTimeFieldOrder         = $.mobile.datebox.prototype.options.lang[DATEBOX_LANG].timeFieldOrder;
-	$("#src_date").data('datebox').options.overrideSlideFieldOrder        = $.mobile.datebox.prototype.options.lang[DATEBOX_LANG].slideFieldOrder;
-	$("#src_date").data('datebox').options.overrideDateFormat             = $.mobile.datebox.prototype.options.lang[DATEBOX_LANG].dateFormat;
-	$("#src_date").data('datebox').options.overrideUseArabicIndic         = $.mobile.datebox.prototype.options.lang[DATEBOX_LANG].useArabicIndic;
-	$("#src_date").data('datebox').options.overrideIsRTL                  = $.mobile.datebox.prototype.options.lang[DATEBOX_LANG].isRTL;
-	$("#src_date").data('datebox').options.overrideCalStartDay            = $.mobile.datebox.prototype.options.lang[DATEBOX_LANG].calStartDay;
-	$("#src_date").data('datebox').options.overrideClearButton            = $.mobile.datebox.prototype.options.lang[DATEBOX_LANG].clearButton;
-	
-	$("#src_time").data('datebox').options.overrideSetDateButtonLabel     = $.mobile.datebox.prototype.options.lang[DATEBOX_LANG].setDateButtonLabel;
-	$("#src_time").data('datebox').options.overrideSetTimeButtonLabel     = $.mobile.datebox.prototype.options.lang[DATEBOX_LANG].setTimeButtonLabel;
-	$("#src_time").data('datebox').options.overrideSetDurationButtonLabel = $.mobile.datebox.prototype.options.lang[DATEBOX_LANG].setDurationButtonLabel;
-	$("#src_time").data('datebox').options.overrideCalTodayButtonLabel    = $.mobile.datebox.prototype.options.lang[DATEBOX_LANG].calTodayButtonLabel;
-	$("#src_time").data('datebox').options.overrideTitleDateDialogLabel   = $.mobile.datebox.prototype.options.lang[DATEBOX_LANG].titleDateDialogLabel;
-	$("#src_time").data('datebox').options.overrideTitleTimeDialogLabel   = $.mobile.datebox.prototype.options.lang[DATEBOX_LANG].titleTimeDialogLabel;
-	$("#src_time").data('datebox').options.overrideDaysOfWeek             = $.mobile.datebox.prototype.options.lang[DATEBOX_LANG].daysOfWeek;
-	$("#src_time").data('datebox').options.overrideDaysOfWeekShort        = $.mobile.datebox.prototype.options.lang[DATEBOX_LANG].daysOfWeekShort;
-	$("#src_time").data('datebox').options.overrideMonthsOfYear           = $.mobile.datebox.prototype.options.lang[DATEBOX_LANG].monthsOfYear;
-	$("#src_time").data('datebox').options.overrideMonthsOfYearShort      = $.mobile.datebox.prototype.options.lang[DATEBOX_LANG].monthsOfYearShort;
-	$("#src_time").data('datebox').options.overrideDurationLabel          = $.mobile.datebox.prototype.options.lang[DATEBOX_LANG].durationLabel;
-	$("#src_time").data('datebox').options.overrideDurationDays           = $.mobile.datebox.prototype.options.lang[DATEBOX_LANG].durationDays;
-	$("#src_time").data('datebox').options.overrideTooltip                = $.mobile.datebox.prototype.options.lang[DATEBOX_LANG].tooltip;
-	$("#src_time").data('datebox').options.overrideNextMonth              = $.mobile.datebox.prototype.options.lang[DATEBOX_LANG].nextMonth;
-	$("#src_time").data('datebox').options.overridePrevMonth              = $.mobile.datebox.prototype.options.lang[DATEBOX_LANG].prevMonth;
-	$("#src_time").data('datebox').options.overrideTimeFormat             = $.mobile.datebox.prototype.options.lang[DATEBOX_LANG].timeFormat;
-	$("#src_time").data('datebox').options.overrideHeaderFormat           = $.mobile.datebox.prototype.options.lang[DATEBOX_LANG].headerFormat;
-	$("#src_time").data('datebox').options.overrideDateFieldOrder         = $.mobile.datebox.prototype.options.lang[DATEBOX_LANG].dateFieldOrder;
-	$("#src_time").data('datebox').options.overrideTimeFieldOrder         = $.mobile.datebox.prototype.options.lang[DATEBOX_LANG].timeFieldOrder;
-	$("#src_time").data('datebox').options.overrideSlideFieldOrder        = $.mobile.datebox.prototype.options.lang[DATEBOX_LANG].slideFieldOrder;
-	$("#src_time").data('datebox').options.overrideDateFormat             = $.mobile.datebox.prototype.options.lang[DATEBOX_LANG].dateFormat;
-	$("#src_time").data('datebox').options.overrideUseArabicIndic         = $.mobile.datebox.prototype.options.lang[DATEBOX_LANG].useArabicIndic;
-	$("#src_time").data('datebox').options.overrideIsRTL                  = $.mobile.datebox.prototype.options.lang[DATEBOX_LANG].isRTL;
-	$("#src_time").data('datebox').options.overrideCalStartDay            = $.mobile.datebox.prototype.options.lang[DATEBOX_LANG].calStartDay;
-	$("#src_time").data('datebox').options.overrideClearButton            = $.mobile.datebox.prototype.options.lang[DATEBOX_LANG].clearButton;
+	initializeDateBox("#src_date");
+	initializeDateBox("#src_time");
+	initializeDateBox("#dst_date");
+	initializeDateBox("#dst_time");
+}
+
+function initializeDateBox(databoxId)
+{
+	$(databoxId).data('datebox').options.overrideSetDateButtonLabel     = $.mobile.datebox.prototype.options.lang[DATEBOX_LANG].setDateButtonLabel;
+	$(databoxId).data('datebox').options.overrideSetTimeButtonLabel     = $.mobile.datebox.prototype.options.lang[DATEBOX_LANG].setTimeButtonLabel;
+	$(databoxId).data('datebox').options.overrideSetDurationButtonLabel = $.mobile.datebox.prototype.options.lang[DATEBOX_LANG].setDurationButtonLabel;
+	$(databoxId).data('datebox').options.overrideCalTodayButtonLabel    = $.mobile.datebox.prototype.options.lang[DATEBOX_LANG].calTodayButtonLabel;
+	$(databoxId).data('datebox').options.overrideTitleDateDialogLabel   = $.mobile.datebox.prototype.options.lang[DATEBOX_LANG].titleDateDialogLabel;
+	$(databoxId).data('datebox').options.overrideTitleTimeDialogLabel   = $.mobile.datebox.prototype.options.lang[DATEBOX_LANG].titleTimeDialogLabel;
+	$(databoxId).data('datebox').options.overrideDaysOfWeek             = $.mobile.datebox.prototype.options.lang[DATEBOX_LANG].daysOfWeek;
+	$(databoxId).data('datebox').options.overrideDaysOfWeekShort        = $.mobile.datebox.prototype.options.lang[DATEBOX_LANG].daysOfWeekShort;
+	$(databoxId).data('datebox').options.overrideMonthsOfYear           = $.mobile.datebox.prototype.options.lang[DATEBOX_LANG].monthsOfYear;
+	$(databoxId).data('datebox').options.overrideMonthsOfYearShort      = $.mobile.datebox.prototype.options.lang[DATEBOX_LANG].monthsOfYearShort;
+	$(databoxId).data('datebox').options.overrideDurationLabel          = $.mobile.datebox.prototype.options.lang[DATEBOX_LANG].durationLabel;
+	$(databoxId).data('datebox').options.overrideDurationDays           = $.mobile.datebox.prototype.options.lang[DATEBOX_LANG].durationDays;
+	$(databoxId).data('datebox').options.overrideTooltip                = $.mobile.datebox.prototype.options.lang[DATEBOX_LANG].tooltip;
+	$(databoxId).data('datebox').options.overrideNextMonth              = $.mobile.datebox.prototype.options.lang[DATEBOX_LANG].nextMonth;
+	$(databoxId).data('datebox').options.overridePrevMonth              = $.mobile.datebox.prototype.options.lang[DATEBOX_LANG].prevMonth;
+	$(databoxId).data('datebox').options.overrideTimeFormat             = $.mobile.datebox.prototype.options.lang[DATEBOX_LANG].timeFormat;
+	$(databoxId).data('datebox').options.overrideHeaderFormat           = $.mobile.datebox.prototype.options.lang[DATEBOX_LANG].headerFormat;
+	$(databoxId).data('datebox').options.overrideDateFieldOrder         = $.mobile.datebox.prototype.options.lang[DATEBOX_LANG].dateFieldOrder;
+	$(databoxId).data('datebox').options.overrideTimeFieldOrder         = $.mobile.datebox.prototype.options.lang[DATEBOX_LANG].timeFieldOrder;
+	$(databoxId).data('datebox').options.overrideSlideFieldOrder        = $.mobile.datebox.prototype.options.lang[DATEBOX_LANG].slideFieldOrder;
+	$(databoxId).data('datebox').options.overrideDateFormat             = $.mobile.datebox.prototype.options.lang[DATEBOX_LANG].dateFormat;
+	$(databoxId).data('datebox').options.overrideUseArabicIndic         = $.mobile.datebox.prototype.options.lang[DATEBOX_LANG].useArabicIndic;
+	$(databoxId).data('datebox').options.overrideIsRTL                  = $.mobile.datebox.prototype.options.lang[DATEBOX_LANG].isRTL;
+	$(databoxId).data('datebox').options.overrideCalStartDay            = $.mobile.datebox.prototype.options.lang[DATEBOX_LANG].calStartDay;
+	$(databoxId).data('datebox').options.overrideClearButton            = $.mobile.datebox.prototype.options.lang[DATEBOX_LANG].clearButton;
 }
 
 function initializePage()
