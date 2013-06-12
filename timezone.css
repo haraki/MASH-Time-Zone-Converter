@@ -14,16 +14,6 @@ span#mash
 	color:lightseagreen;
 }
 
-div#src
-{
-	margin-bottom:20px;
-}
-
-div#dst
-{
-	margin-bottom:20px;
-}
-
 span#msg_from
 {
 	font-size:small;

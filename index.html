@@ -7,7 +7,7 @@
 <head>
 <meta charset = "UTF-8" />
 <meta name = "viewport" content = "width = device-width, initial-scale = 1" />
-<title>MASH Time Zone Converter on Web</title>
+<title>MASH Time Zone Converter</title>
 
 <link rel = "stylesheet" type = "text/css" href = "./jquery/jquery.mobile-1.2.1.min.css" />
 <link rel = "stylesheet" type = "text/css" href = "./jquery/jqm-datebox.min.css" />
@@ -32,6 +32,12 @@
     <p style = "text-align:center">Initializing...</p>
   </div>
   <div id = "main" data-role = "content" style = "display:none">
+    <div id = "option">
+      <select id = "language" name = "lanugage" onChange = "change_language()">
+        <option value = "en">English(en)</option>
+        <option value = "ja">日本語(ja)</option>
+      </select>
+    </div>
     <div id = "src">
       <span id = "msg_from">From:</span>
       <fieldset data-role = "controlgroup">
@@ -69,11 +75,8 @@
         <span id = "dst_date_text"></span> <span id = "dst_time_text"></span>
       </div>
     </div>
-    <div id = "option">
-      <select id = "language" name = "lanugage" onChange = "change_language()">
-        <option value = "en">English(en)</option>
-        <option value = "ja">日本語(ja)</option>
-      </select>
+    <div>
+      <a id = "msg_set_current_time" href = "" data-role = "button" onClick = "push_setCurrentTime()">Set current time</a>
     </div>
   </div>
 </section>

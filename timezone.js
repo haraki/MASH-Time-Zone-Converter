@@ -7,6 +7,8 @@ var timezoneData;
 var i18nDir = "./i18n/";
 var tzDataDir = "./tz/";
 var language = "en";
+var cookieRaw;
+var cookieExpires = 7;
 
 /*
  * Initialize
@@ -16,8 +18,8 @@ function initialize(mode)
 {
 	switch(mode)
 	{
-	case 'option':
-		initializeOption();
+	case 'cookie':
+		initializeCookie();
 		
 		initialize('properties');
 		
@@ -57,13 +59,23 @@ function initialize(mode)
 	}
 }
 
-function initializeOption()
+function initializeCookie()
 {
-	var languageCookie = $.cookie('language');
+	$.cookie.json = true;
+	
+	var cr = $.cookie('option');
+	if(cr != undefined)
+	{
+		cookieRaw = cr;
+	}
+	
+	var languageCookie = getCookie('language');
 	if((languageCookie != undefined) && (languageCookie != ""))
 	{
 		language = languageCookie;
 	}
+	
+	setCookie('language', language);
 }
 
 function initializeDateBoxAll()
@@ -105,7 +117,6 @@ function initializeDateBox(databoxId)
 
 function initializePage()
 {
-	$("title").text(TITLE);
 	$("#msg_title").text(TITLE);
 	$("#msg_from").text(FROM);
 	$("#msg_to").text(TO);
@@ -113,6 +124,7 @@ function initializePage()
 	$("#msg_sel_country_dst").text(SELECT_COUNTRY);
 	$("#msg_sel_city_src").text(SELECT_CITY);
 	$("#msg_sel_city_dst").text(SELECT_CITY);
+	$("#msg_set_current_time").children('.ui-btn-inner').children('.ui-btn-text').text(SET_CURRENT_TIME);
 	
 	for(var i = 0;i < countryData.length;i++)
 	{
@@ -145,16 +157,43 @@ function initializePage()
  * Internal Function
  */
 
+function setCookie(cookieName, cookieValue)
+{
+	if(cookieRaw == undefined)
+	{
+		cookieRaw = new Object();
+	}
+	
+	cookieRaw[cookieName] = cookieValue;
+	
+	writeCookie();
+}
+
+function writeCookie()
+{
+	$.cookie('option', cookieRaw, { expires:cookieExpires });
+}
+
+function getCookie(cookieName)
+{
+	if(cookieRaw != undefined)
+	{
+		return cookieRaw[cookieName];
+	}
+	
+	return undefined;
+}
+
 function checkCookie(countryCookieName, countrySelectId, zoneCookieName, citySelectId)
 {
-	var countryCookie = $.cookie(countryCookieName);
+	var countryCookie = getCookie(countryCookieName);
 	if((countryCookie != undefined) && (countryCookie != ""))
 	{
 		$(countrySelectId).val(countryCookie);
 		
 		var firstValue = setCitySelect(citySelectId, countryCookie);
 		
-		var zoneCookie = $.cookie(zoneCookieName);
+		var zoneCookie = getCookie(zoneCookieName);
 		if((zoneCookie != undefined) && (zoneCookie != ""))
 		{
 			$(citySelectId).selectmenu('enable');
@@ -256,7 +295,7 @@ function change_srcCountry()
 {
 	var srcCountry = $("#src_country").val();
 	
-	$.cookie('src_country', srcCountry);
+	setCookie('src_country', srcCountry);
 	
 	clearCitySelect('#src_city');
 	
@@ -282,7 +321,7 @@ function change_dstCountry()
 {
 	var dstCountry = $("#dst_country").val();
 	
-	$.cookie('dst_country', dstCountry);
+	setCookie('dst_country', dstCountry);
 	
 	clearCitySelect('#dst_city');
 	
@@ -308,7 +347,7 @@ function change_srcCity()
 {
 	var srcZone = $("#src_city").val();
 	
-	$.cookie('src_zone', srcZone);
+	setCookie('src_zone', srcZone);
 	
 	var srcDateVal = $("#src_date").val();
 	var srcTimeVal = $("#src_time").val();
@@ -325,7 +364,7 @@ function change_dstCity()
 {
 	var dstZone = $("#dst_city").val();
 	
-	$.cookie('dst_zone', dstZone);
+	setCookie('dst_zone', dstZone);
 	
 	translateTimeZone();
 }
@@ -342,13 +381,18 @@ function change_srcTime()
 
 function change_language()
 {
-	var lang = $("#language").val();
-	if(lang != language)
+	var selectLang = $("#language").val();
+	if(selectLang != language)
 	{
-		$.cookie('language', lang);
+		setCookie('language', selectLang);
 		
 		location.replace("./");
 	}
 }
 
-$(document).ready(initialize('option'));
+function push_setCurrentTime()
+{
+	setSrcCurrentDateTime();
+}
+
+$(document).ready(initialize('cookie'));
