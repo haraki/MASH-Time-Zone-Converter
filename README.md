@@ -1,6 +1,6 @@
-﻿# MASH Web Time Zone Converter
+﻿# MASH Time Zone Converter
 
-"MASH Web Time Zone Converter" はスマートフォン向けに最適化されたタイムゾーン変換Webアプリです。
+"MASH Time Zone Converter" はスマートフォン向けに最適化されたタイムゾーン変換Webアプリです。
 
 ## Overview
 
@@ -8,13 +8,34 @@
 ## Setup
 
 下記のモジュールが必要になります。
-* jquery
-* jquery-cookie
-* jquery-i18n-properties
-* jquerymobile
-* jqm-datebox
-* timezone-js
+
+### jquery
+site: http://jquery.com/download/
+file: jquery-1.8.3.min.js
+
+### jquery-cookie.js
+site: https://github.com/carhartl/jquery-cookie
+file: jquery-cookie.js
+
+### jquery.i18n.properties
+site: https://code.google.com/p/jquery-i18n-properties/downloads/list
+file: jquery.i18n.properties-min-1.0.9.js
+
+### jquery.mobile
+site: http://jquerymobile.com/download/
+file: jquery.mobile-1.2.1.min.js
+
+### jqm-datebox
+site: http://dev.jtsage.com/cdn/datebox/latest/
+file: jqm-datebox.core.min.js, jqm-datebox.mode.datebox.min.js
+
+### timezone-js
+site: https://github.com/mde/timezone-js
+file: date.js
+
 * tz database
+site: http://www.iana.org/time-zones
+file: tzdata2013c.tar.gz, tzcode2013c.tar.gz
 
 ## Language
 
