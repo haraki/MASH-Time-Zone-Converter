@@ -9,24 +9,39 @@
 
 下記のモジュールが必要になります。
 
-* jquery (http://jquery.com)
-    * jquery-1.8.3.min.js
+ モジュール             | URL                                               | 必要なファイル
+------------------------|---------------------------------------------------|------------------------------------
+ jQuery                 | http://jquery.com                                 | jquery-1.8.3.min.js
+ jquery-cookie          | https://github.com/carhartl/jquery-cookie         | jquery-cookie.js
+ jquery.i18n.properties | https://code.google.com/p/jquery-i18n-properties/ | jquery.i18n.properties-min-1.0.9.js
+ jQueryMobile           | http://jquerymobile.com                           | jquery.mobile-1.2.1.min.js
+                        |                                                   | jquery.mobile-1.2.1.min.css
+ jQM-DateBox            | http://dev.jtsage.com/jQM-DateBox2/               | jqm-datebox.core.min.js
+                        |                                                   | jqm-datebox.mode.datebox.min.js
+ timezone-js            | https://github.com/mde/timezone-js                | date.js
+ tz database            | http://www.iana.org/time-zones                    | tzdata2013c.tar.gz
+                        |                                                   | tzcode2013c.tar.gz
 
-* jquery-cookie.js (https://github.com/carhartl/jquery-cookie)
-    * jquery-cookie.js
+* jQuery (http://jquery.com)
+  jquery-1.8.3.min.js を /jquery にダウンロード。
+
+* jquery-cookie (https://github.com/carhartl/jquery-cookie)
+  jquery-cookie.js を /jquery にダウンロード。
 
 * jquery.i18n.properties (https://code.google.com/p/jquery-i18n-properties/)
-    * jquery.i18n.properties-min-1.0.9.js
+  jquery.i18n.properties-min-1.0.9.js を /jquery にダウンロード。
 
-* jquery.mobile (http://jquerymobile.com)
-    * jquery.mobile-1.2.1.min.js
+* jQueryMobile (http://jquerymobile.com) 
+  jquery.mobile-1.2.1.min.js, jquery.mobile-1.2.1.min.css を /jqm にダウンロード。
+  ajax-loader.gif, icons-18-black.png, icons-18-white.png, icons-36-black.png, icons-36-white.png を /jqm/i18n にダウンロード。
 
-* jqm-datebox (http://dev.jtsage.com/jQM-DateBox2/)
-    * jqm-datebox.core.min.js
-    * jqm-datebox.mode.datebox.min.js
+* jQM-DateBox (http://dev.jtsage.com/jQM-DateBox2/)
+  jqm-datebox.core.min.js, jqm-datebox.mode.datebox.min.js を /jqm-datebox にダウンロード。
+  datebox.png を /jqm-datebox/image にダウンロード。
+  jquery.mobile.datebox.i18n.en.utf8.js, jquery.mobile.datebox.i18n.ja.utf8.js を /i18n にダウンロード。
 
 * timezone-js (https://github.com/mde/timezone-js)
-    * date.js
+  date.js を /timezone-js にダウンロード。
 
 * tz database (http://www.iana.org/time-zones)
     * tzdata2013c.tar.gz
