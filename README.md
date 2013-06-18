@@ -17,8 +17,8 @@
     * /i18n/Messages_ja.properties
     * /i18n/country.json
     * /i18n/country.ja.json
-    * /i18n/city.json
-    * /i18n/city.ja.json
+    * /i18n/timezone.json
+    * /i18n/timezone.ja.json
 
 2.下記のファイルを任意のディレクトリ以下の、指定のディレクトリにダウンロード（tzdata2013c.tar.gz は展開も）します。
 
@@ -55,17 +55,70 @@
     |-- timezone.css
     |
     |-- <i18n>
+    |   |
+    |   |-- Messages.properties
+    |   |
+    |   |-- Messages_en.properties
+    |   |
+    |   |-- Messages_ja.properties
+    |   |
+    |   |-- country.json
+    |   |
+    |   |-- country.ja.json
+    |   |
+    |   |-- timezone.json
+    |   |
+    |   |-- timezone.ja.json
+    |   |
+    |   |-- jquery.mobile.datebox.i18n.en.utf8.js
+    |   |
+    |   |-- jquery.mobile.datebox.i18n.ja.utf8.js
     |
     |-- <jquery>
+    |   |
+    |   |-- jquery-1.8.3.min.js
+    |   |
+    |   |-- jquery.cookie.js
+    |   |
+    |   |-- jquery.i18n.properties-min-1.0.9.js
     |
     |-- <jqm>
+    |   |
+    |   |-- jquery.mobile-1.2.1.min.js
+    |   |
+    |   |-- jquery.mobile-1.2.1.min.css
+    |   |
+    |   |-- <images>
+    |       |
+    |       |-- ajax-loader.gif
+    |       |
+    |       |-- icons-18-black.png
+    |       |
+    |       |-- icons-18-white.png
+    |       |
+    |       |-- icons-36-black.png
+    |       |
+    |       |-- icons-36-white.png
     |
     |-- <jqm-datebox>
+    |   |
+    |   |-- jqm-datebox.core.min.js
+    |   |
+    |   |-- jqm-datebox.mode.datebox.min.js
+    |   |
+    |   |-- jqm-datebox.min.css
+    |   |
+    |   |-- <image>
+    |       |
+    |       |-- datebox.png
     |
     |-- <timezone-js>
+    |   |
+    |   |-- date.js
     |
     |-- <tz>
-
+        |
+        |-- タイムゾーンデータファイル群
 
 ## Language
 
