@@ -2,23 +2,21 @@
 
 "MASH Time Zone Converter" はスマートフォン向けに最適化されたタイムゾーン変換Webアプリです。
 
-## Overview
 
-
-## Setup
+## セットアップ Setup
 
 1.下記ファイル・ディレクトリを任意のディレクトリ(例:timezone)にダウンロードします。
 
-    * /index.html
-    * /timezone.js
-    * /timezone.css
-    * /i18n/Messages.properties
-    * /i18n/Messages_en.properties
-    * /i18n/Messages_ja.properties
-    * /i18n/country.json
-    * /i18n/country.ja.json
-    * /i18n/timezone.json
-    * /i18n/timezone.ja.json
+* /index.html
+* /timezone.js
+* /timezone.css
+* /i18n/Messages.properties
+* /i18n/Messages_en.properties
+* /i18n/Messages_ja.properties
+* /i18n/country.json
+* /i18n/country.ja.json
+* /i18n/timezone.json
+* /i18n/timezone.ja.json
 
 2.下記のファイルを任意のディレクトリ以下の、指定のディレクトリにダウンロード（tzdata2013c.tar.gz は展開も）します。
 
@@ -120,7 +118,20 @@
         |
         |-- タイムゾーンデータファイル群
 
-## Language
+
+## 使用方法 Usage
+
+一番上のセレクトメニューは言語設定です。
+現在は日本語と英語が選択できます。
+
+「変換元」の「国・地域」「都市」を選択すると、現在の日付・時刻が設定されます。
+日付・時刻をタップすると、入力用のダイアログが表示され、変更することができます。
+
+「変換先」の「国・地域」「都市」を選択すると、「変換元」に設定された日付・時刻から「変換先」の「国・地域」「都市」の日付・時刻に変換されて表示されます。
+
+「現在時刻を設定」ボタンをタップすると、現在選択されている「国・地域」「都市」の現在時刻が入力されます。
+
+## 対応言語 Language
 
 現在、日本語と英語に対応しています。
 他の言語に対応したい場合は、下記ファイルを新規作成し、/i18n に追加してください。
@@ -134,7 +145,7 @@
 * jquery.mobile.datebox.i18n.{language}.utf8.js
 
 
-## License
+## ライセンス License
 
 The MIT License (MIT)
 
