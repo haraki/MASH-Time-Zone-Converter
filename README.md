@@ -8,48 +8,78 @@
 ## Setup
 
 1.下記ファイル・ディレクトリを任意のディレクトリ(例:timezone)にダウンロードします。
+
     * /index.html
     * /timezone.js
     * /timezone.css
-    * /Messages.properties
-    * /Messages_en.properties
-    * /Messages_ja.properties
+    * /i18n/Messages.properties
+    * /i18n/Messages_en.properties
+    * /i18n/Messages_ja.properties
     * /i18n/country.json
     * /i18n/country.ja.json
     * /i18n/city.json
     * /i18n/city.ja.json
 
-1.下記のファイルを任意のディレクトリ以下の、指定のディレクトリにダウンロード（tzdata2013c.tar.gz は展開も）します。
+2.下記のファイルを任意のディレクトリ以下の、指定のディレクトリにダウンロード（tzdata2013c.tar.gz は展開も）します。
 
- モジュール             | URL                                               | ファイル                            | ディレクトリ
-------------------------|---------------------------------------------------|-------------------------------------|------------
- jQuery                 | http://jquery.com                                 | jquery-1.8.3.min.js                 | /jquery
- jquery-cookie          | https://github.com/carhartl/jquery-cookie         | jquery-cookie.js                    | /jquery
- jquery.i18n.properties | https://code.google.com/p/jquery-i18n-properties/ | jquery.i18n.properties-min-1.0.9.js | /jquery
- jQueryMobile           | http://jquerymobile.com                           | jquery.mobile-1.2.1.min.js          | /jqm
-                        |                                                   | jquery.mobile-1.2.1.min.css         | /jqm
-                        |                                                   | ajax-loader.gif                     | /jqm/images
-                        |                                                   | icons-18-black.png                  | /jqm/images
-                        |                                                   | icons-18-white.png                  | /jqm/images
-                        |                                                   | icons-36-black.png                  | /jqm/images
-                        |                                                   | icons-36-white.png                  | /jqm/images
- jQM-DateBox            | http://dev.jtsage.com/jQM-DateBox2/               | jqm-datebox.core.min.js             | /jqm-datebox
-                        |                                                   | jqm-datebox.mode.datebox.min.js     | /jqm-datebox
-                        |                                                   | jqm-datebox.min.css                 | /jqm-datebox
-                        |                                                   | datebox.png                         | /jqm-datebox/image
- timezone-js            | https://github.com/mde/timezone-js                | date.js                             | /timezone-js
- tz database            | http://www.iana.org/time-zones                    | tzdata2013c.tar.gz                  | /tz
+ モジュール             | URL                                               | ファイル                              | ディレクトリ
+------------------------|---------------------------------------------------|---------------------------------------|--------------------
+ jQuery                 | http://jquery.com                                 | jquery-1.8.3.min.js                   | /jquery
+ jquery-cookie          | https://github.com/carhartl/jquery-cookie         | jquery-cookie.js                      | /jquery
+ jquery.i18n.properties | https://code.google.com/p/jquery-i18n-properties/ | jquery.i18n.properties-min-1.0.9.js   | /jquery
+ jQueryMobile           | http://jquerymobile.com                           | jquery.mobile-1.2.1.min.js            | /jqm
+                        |                                                   | jquery.mobile-1.2.1.min.css           | /jqm
+                        |                                                   | ajax-loader.gif                       | /jqm/images
+                        |                                                   | icons-18-black.png                    | /jqm/images
+                        |                                                   | icons-18-white.png                    | /jqm/images
+                        |                                                   | icons-36-black.png                    | /jqm/images
+                        |                                                   | icons-36-white.png                    | /jqm/images
+ jQM-DateBox            | http://dev.jtsage.com/jQM-DateBox2/               | jqm-datebox.core.min.js               | /jqm-datebox
+                        |                                                   | jqm-datebox.mode.datebox.min.js       | /jqm-datebox
+                        |                                                   | jqm-datebox.min.css                   | /jqm-datebox
+                        |                                                   | jquery.mobile.datebox.i18n.en.utf8.js | /i18n
+                        |                                                   | jquery.mobile.datebox.i18n.ja.utf8.js | /i18n
+                        |                                                   | datebox.png                           | /jqm-datebox/image
+ timezone-js            | https://github.com/mde/timezone-js                | date.js                               | /timezone-js
+ tz database            | http://www.iana.org/time-zones                    | tzdata2013c.tar.gz                    | /tz
+
+
+ここまでで、ディレクトリ構成は下記のようになっているはずです。
+
+    <timezone>
+    |
+    |-- index.html
+    |
+    |-- timezone.js
+    |
+    |-- timezone.css
+    |
+    |-- <i18n>
+    |
+    |-- <jquery>
+    |
+    |-- <jqm>
+    |
+    |-- <jqm-datebox>
+    |
+    |-- <timezone-js>
+    |
+    |-- <tz>
 
 
 ## Language
 
-日本語と英語に対応しています。
-他の言語に対応したい場合は、i18nディレクトリに下記ファイルを追加する必要があります。
+現在、日本語と英語に対応しています。
+他の言語に対応したい場合は、下記ファイルを新規作成し、/i18n に追加してください。
 
-* jquery.mobile.datebox.i18n.{language}.utf8.js
 * country.{language}.json
 * timezone.{language}.json
 * Message_{language}.json
+
+また、jQM-DateBox のサイト(http://dev.jtsage.com/jQM-DateBox2/)から言語ファイルをダウンロードし、/i18n に追加してください。
+
+* jquery.mobile.datebox.i18n.{language}.utf8.js
+
 
 ## License
 
