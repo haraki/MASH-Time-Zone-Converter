@@ -150,7 +150,7 @@ PerlやPHP等、サーバサイドで動作するプログラムはありませ�
 * timezone.{language}.json
 * Message_{language}.json
 
-また、jQM-DateBox のサイト(http://dev.jtsage.com/jQM-DateBox2/)から言語ファイルをダウンロードし、/i18n に追加してください。
+また、[jQM-DateBox](http://dev.jtsage.com/jQM-DateBox2/) から言語ファイルをダウンロードし、/i18n に追加してください。
 
 * jquery.mobile.datebox.i18n.{language}.utf8.js
 
