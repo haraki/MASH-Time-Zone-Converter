@@ -12,6 +12,8 @@
 PerlやPHP等、サーバサイドで動作するプログラムはありません(「国・地域」「都市」選択用データ生成のためのPerlスクリプトは除く)。
 そのため、サーバ側の負荷は軽いです。
 
+http://haraki.jp/timezone/ で実際の動作を見ることができます。
+
 ## セットアップ Setup
 
 1.下記ファイルを任意のディレクトリ(例:timezone)にダウンロードします。
@@ -178,3 +180,7 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
+
+## 開発者 Author
+
+[原木 正志 / Masashi Haraki](http://haraki.jp) ([masa.haraki@gmail.com](masa.haraki@gmail.com))
