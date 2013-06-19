@@ -183,4 +183,4 @@ THE SOFTWARE.
 
 ## 開発者 Author
 
-[原木 正志 / Masashi Haraki](http://haraki.jp) ([masa.haraki@gmail.com](masa.haraki@gmail.com))
+[原木 正志 / Masashi Haraki](http://haraki.jp) (masa.haraki@gmail.com)
